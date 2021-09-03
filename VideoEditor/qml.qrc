@@ -4,5 +4,8 @@
         <file>PlayOrEditView.qml</file>
         <file>Images/edited-videos.png</file>
         <file>Images/raw-videos.png</file>
+        <file>VideoDirectoryView.qml</file>
+        <file>Images/edit-video.png</file>
+        <file>Images/back-button.png</file>
     </qresource>
 </RCC>

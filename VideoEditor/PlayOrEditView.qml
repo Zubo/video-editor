@@ -10,11 +10,13 @@ Item {
 
         Button {
             icon.source: "qrc:/Images/raw-videos.png"
-            icon.color: transparent
+            icon.color: "transparent"
             icon.width: 100
             icon.height: 100
 
             text: qsTr("Raw Videos")
+
+            onClicked: stack.push(mainView.rawVideoView)
 
             ToolTip.visible: hovered
             ToolTip.text: qsTr("Edit or play raw videos")
@@ -22,11 +24,13 @@ Item {
 
         Button {
             icon.source: "qrc:/Images/edited-videos.png"
-            icon.color: transparent
+            icon.color: "transparent"
             icon.width: 100
             icon.height: 100
 
             text: qsTr("Edited Videos")
+
+            onClicked: stack.push(mainView.editedVideoView)
 
             ToolTip.visible: hovered
             ToolTip.text: qsTr("Play edited videos")
