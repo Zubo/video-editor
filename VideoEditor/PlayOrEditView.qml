@@ -1,6 +1,6 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 2.15
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.12
 
 Item {
     RowLayout {
@@ -11,8 +11,8 @@ Item {
         Button {
             icon.source: "qrc:/Images/raw-videos.png"
             icon.color: "transparent"
-            icon.width: 100
-            icon.height: 100
+            icon.width: mainView.width / 3
+            icon.height: mainView.height / 3
 
             text: qsTr("Raw Videos")
 
@@ -25,8 +25,8 @@ Item {
         Button {
             icon.source: "qrc:/Images/edited-videos.png"
             icon.color: "transparent"
-            icon.width: 100
-            icon.height: 100
+            icon.width: mainView.width / 3
+            icon.height: mainView.height / 3
 
             text: qsTr("Edited Videos")
 

@@ -1,7 +1,7 @@
-import QtQuick 2.15
-import QtQuick.Window 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15
+import QtQuick 2.12
+import QtQuick.Window 2.12
+import QtQuick.Layouts 1.12
+import QtQuick.Controls 2.12
 
 ApplicationWindow {
     id: mainView
@@ -25,10 +25,11 @@ ApplicationWindow {
         Rectangle {
             id: backButtonBar
             Layout.preferredWidth: mainView.width
-            Layout.preferredHeight: 20
+            Layout.preferredHeight: backButton.height
             Layout.minimumHeight: 20
 
             Button {
+                id: backButton
                 text: "Back"
                 enabled: stack.depth > 1
                 onClicked: stack.pop()

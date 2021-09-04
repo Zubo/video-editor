@@ -1,6 +1,6 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 2.15
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.12
 import Qt.labs.folderlistmodel 2.1
 
 Item {
@@ -18,9 +18,10 @@ Item {
             id: filefolderModel
             showDirs: false
             showDirsFirst: false
-            nameFilters: ["*.mp4"]
-            folder: "file:///" + directoryPath
+            nameFilters: ["*.mkv", "*.mp4"]
+            folder: "file://" + ((directoryPath[0] === '/') ? directoryPath : ("/" + directoryPath))
         }
+
 
         delegate: Column {
             ColumnLayout {
@@ -63,6 +64,7 @@ Item {
 
                     Button {
                         anchors.fill: parent
+                        anchors.margins: 5
                         icon.source: "qrc:/Images/edit-video.png"
                         icon.color: "transparent"
                         text: "Edit"
