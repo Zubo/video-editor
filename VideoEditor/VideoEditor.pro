@@ -1,4 +1,4 @@
-QT += quick
+QT += core quick
 
 CONFIG += c++11
 
@@ -8,6 +8,8 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp
+
+unix:!macx: INCLUDEPATH += /usr/local/include/opencv4
 
 RESOURCES += qml.qrc
 
@@ -23,3 +25,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES +=
+
+unix:!macx: LIBS += -lopencv_core

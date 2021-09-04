@@ -7,6 +7,8 @@ ApplicationWindow {
     id: mainView
     width: 640
     height: 480
+    minimumWidth: 500
+    minimumHeight: 300
     visible: true
     title: qsTr("Hello World")
 
