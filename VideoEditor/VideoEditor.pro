@@ -11,13 +11,15 @@ SOURCES += \
         VideoProcessor/ImageEffect/CircleImageEffectProvider.cpp \
         VideoProcessor/ImageEffect/IImageEffectProvider.cpp \
         VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.cpp \
+        VideoProcessor/VideoThumbnailProvider.cpp \
         main.cpp
 
 HEADERS += \
     VideoProcessor/Const.hpp \
     VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp \
     VideoProcessor/ImageEffect/IImageEffectProvider.hpp \
-    VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.h
+    VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.h \
+    VideoProcessor/VideoThumbnailProvider.hpp
 
 INCLUDEPATH += $$PWD/ThirdParty/lib/include
 DEPENDPATH += $$PWD/ThirdParty/lib/include
@@ -57,11 +59,20 @@ else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/ThirdParty/
 else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/ThirdParty/lib/opencv_imgproc453.lib
 else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/ThirdParty/lib/opencv_imgproc453d.lib
 
+#OpenCV-Imgcodecs
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/ThirdParty/lib/ -lopencv_imgcodecs453
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/ThirdParty/lib/ -lopencv_imgcodecs453d
 
-#OpenCV-Imgcodecs
 win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/ThirdParty/lib/libopencv_imgcodecs453.a
 else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/ThirdParty/lib/libopencv_imgcodecs453d.a
 else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/ThirdParty/lib/opencv_imgcodecs453.lib
 else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/ThirdParty/lib/opencv_imgcodecs453d.lib
+
+#OpenCV-VideoIO
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/ThirdParty/lib/ -lopencv_videoio453
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/ThirdParty/lib/ -lopencv_videoio453d
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/ThirdParty/lib/libopencv_videoio453.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/ThirdParty/lib/libopencv_videoio453d.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/ThirdParty/lib/opencv_videoio453.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/ThirdParty/lib/opencv_videoio453d.lib
