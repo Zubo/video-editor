@@ -15,7 +15,7 @@ public:
     cv::Mat const & getImageEffect() const override;
 
 private:
-    cv::Mat _shape;
+    cv::Mat _effect;
 };
 
 #endif // CIRCLEIMAGEEFFECTPROVIDER_H

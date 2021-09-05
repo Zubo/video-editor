@@ -10,12 +10,14 @@ SOURCES += \
         VideoProcessor/Const.cpp \
         VideoProcessor/ImageEffect/CircleImageEffectProvider.cpp \
         VideoProcessor/ImageEffect/IImageEffectProvider.cpp \
+        VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.cpp \
         main.cpp
 
 HEADERS += \
     VideoProcessor/Const.hpp \
     VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp \
     VideoProcessor/ImageEffect/IImageEffectProvider.hpp \
+    VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.h
 
 INCLUDEPATH += $$PWD/ThirdParty/lib/include
 DEPENDPATH += $$PWD/ThirdParty/lib/include
