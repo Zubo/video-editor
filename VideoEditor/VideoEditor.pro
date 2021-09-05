@@ -46,7 +46,7 @@ else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/ThirdParty/
 else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/ThirdParty/lib/opencv_core453.lib
 else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/ThirdParty/lib/opencv_core453d.lib
 
-unix:!macx: LIBS += -L$$PWD/ThirdParty/lib/ -lopencv_core
+unix:!macx: LIBS += -L$$PWD/ThirdParty/lib/ -lopencv_core -lopencv_imgcodecs -lopencv_imgproc
 
 # OpenCV-Imgproc
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/ThirdParty/lib/ -lopencv_imgproc453
