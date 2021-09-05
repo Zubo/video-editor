@@ -8,14 +8,14 @@ CONFIG += c++17
 
 SOURCES += \
         VideoProcessor/Const.cpp \
-        VideoProcessor/Shape/CircleShapeProvider.cpp \
-        VideoProcessor/Shape/IShapeProvider.cpp \
+        VideoProcessor/ImageEffect/CircleImageEffectProvider.cpp \
+        VideoProcessor/ImageEffect/IImageEffectProvider.cpp \
         main.cpp
 
 HEADERS += \
-    VideoProcessor/Const.h \
-    VideoProcessor/Shape/CircleShapeProvider.hpp \
-    VideoProcessor/Shape/IShapeProvider.hpp
+    VideoProcessor/Const.hpp \
+    VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp \
+    VideoProcessor/ImageEffect/IImageEffectProvider.hpp \
 
 INCLUDEPATH += $$PWD/ThirdParty/lib/include
 DEPENDPATH += $$PWD/ThirdParty/lib/include

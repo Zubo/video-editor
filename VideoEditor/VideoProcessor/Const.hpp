@@ -6,7 +6,8 @@
 class Const
 {
 public:
-    static const cv::Scalar RedColorScalar;
+	static const cv::Scalar RedColorScalar;
+	static const cv::Scalar BlueColorScalar;
 
 private:
     Const() = delete;
