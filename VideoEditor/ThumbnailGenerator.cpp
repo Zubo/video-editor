@@ -1,5 +1,3 @@
-#include <filesystem>
-
 #include <opencv2/opencv.hpp>
 
 #include <VideoProcessor/VideoThumbnailProvider.hpp>

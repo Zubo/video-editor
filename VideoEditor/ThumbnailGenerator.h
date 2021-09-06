@@ -1,6 +1,7 @@
 #ifndef THUMBNAILGENERATOR_H
 #define THUMBNAILGENERATOR_H
 
+#include <filesystem>
 #include <string>
 #include <vector>
 

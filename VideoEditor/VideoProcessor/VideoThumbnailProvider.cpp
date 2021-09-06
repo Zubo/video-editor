@@ -16,7 +16,7 @@ cv::Mat VideoThumbnailProvider::getThumbnail(std::string const& videoPath)
     int const frameCount{ static_cast<int>(videoCapture.get(cv::CAP_PROP_FRAME_COUNT)) };
 
 	cv::Mat thumbnail;
-    int const frameIndex = (frameCount > 5000) ? 5000 : frameCount / 2;
+    int const frameIndex = (frameCount > 1000) ? 1000 : frameCount / 2;
 
     for (int i = 0; i < frameIndex; ++i) {
 		videoCapture >> thumbnail;

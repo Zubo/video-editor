@@ -31,7 +31,7 @@ Item {
                     Layout.preferredHeight: 120
 
                     Button {
-                        icon.source: "qrc:/Images/raw-videos.png"
+                        icon.source: "file:///" + filePath.substr(0, filePath.lastIndexOf(".")) + ".png"
                         icon.color: "transparent"
                         icon.width: width
                         icon.height: height
@@ -47,11 +47,10 @@ Item {
                     Layout.preferredHeight: 10
 
                     Text {
-                        text: fileName.length > 22 ? fileName.substring(0, 22) + "..." : fileName
+                        text: fileName.length > 15 ? fileName.substring(0, 15) + "..." : fileName
                         anchors.bottom: parent.bottom
                         anchors.horizontalCenter: parent.horizontalCenter
                         width: parent.width
-                        wrapMode: "WordWrap"
                         horizontalAlignment: Text.AlignHCenter
                     }
                 }
