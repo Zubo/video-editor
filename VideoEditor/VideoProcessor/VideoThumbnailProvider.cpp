@@ -4,7 +4,8 @@ cv::Mat VideoThumbnailProvider::getThumbnail(std::string const& videoPath)
 {
     cv::VideoCapture videoCapture;
 
-	videoCapture.open(videoPath);
+    char const * p = videoPath.c_str();
+    videoCapture.open(p);
 
 	bool const captureOpen = videoCapture.isOpened();
 
@@ -12,15 +13,14 @@ cv::Mat VideoThumbnailProvider::getThumbnail(std::string const& videoPath)
         return cv::Mat(100, 100, CV_8UC4);
     }
 
-	int const frameCount{ static_cast<int>(videoCapture.get(cv::CAP_PROP_FRAME_COUNT)) };
+    int const frameCount{ static_cast<int>(videoCapture.get(cv::CAP_PROP_FRAME_COUNT)) };
 
 	cv::Mat thumbnail;
+    int const frameIndex = (frameCount > 5000) ? 5000 : frameCount / 2;
 
-	for (int i = 0; i < frameCount / 2; ++i) {
+    for (int i = 0; i < frameIndex; ++i) {
 		videoCapture >> thumbnail;
 	}
-
-	cv::rotate(thumbnail, thumbnail, cv::ROTATE_90_COUNTERCLOCKWISE);
 
 	return thumbnail;
 }
