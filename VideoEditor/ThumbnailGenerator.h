@@ -15,6 +15,7 @@ public:
     void generate() const;
 
 private:
+	void generateForDirectory(std::string const& dirPath) const;
     bool isExtensionSupported(std::filesystem::path extension) const;
 
 private:

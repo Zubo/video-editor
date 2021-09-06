@@ -20,13 +20,21 @@ void ThumbnailGenerator::registerExtension(std::string const& extension)
 void ThumbnailGenerator::generate() const
 {
 	for (std::string const & dirPath : _directoryPaths) {
-		for (fs::directory_entry const& directoryEntry : fs::directory_iterator(dirPath)) {
-			fs::path const & filePath = directoryEntry.path();
-			fs::path const extension = filePath.extension();
+		generateForDirectory(dirPath);
+	}
+}
 
-			if (isExtensionSupported(extension)) {
+void ThumbnailGenerator::generateForDirectory(std::string const& dirPath) const
+{
+	for (fs::directory_entry const& directoryEntry : fs::directory_iterator(dirPath)) {
+		fs::path const& filePath = directoryEntry.path();
+		fs::path const extension = filePath.extension();
+
+		if (isExtensionSupported(extension)) {
+			fs::path thumbnailPath = fs::path(filePath).replace_extension(fs::path(".png"));
+
+			if (!fs::exists(thumbnailPath)) {
 				cv::Mat thumbnail = VideoThumbnailProvider::getThumbnail(filePath.string());
-                fs::path thumbnailPath = fs::path(filePath).replace_extension(fs::path(".png"));
 				cv::imwrite(thumbnailPath.string(), thumbnail);
 			}
 		}
