@@ -15,6 +15,7 @@ ApplicationWindow {
     property Component playOrEditView: PlayOrEditView{}
     property Component rawVideoView: VideoDirectoryView{ directoryPath: executableRoot + "/Videos/Raw"; showEdit: true }
     property Component editedVideoView: VideoDirectoryView{ directoryPath: executableRoot + "/Videos/Edited" }
+    property Component videoEffectSelector: VideoEffectSelector{}
 
     menuBar: MenuBar {
         Menu {

@@ -67,6 +67,7 @@ Item {
                         icon.source: "qrc:/Images/edit-video.png"
                         icon.color: "transparent"
                         text: "Edit"
+                        onClicked: stack.push(mainView.videoEffectSelector)
                     }
                 }
             }
