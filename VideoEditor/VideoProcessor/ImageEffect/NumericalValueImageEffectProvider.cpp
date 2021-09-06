@@ -24,6 +24,11 @@ NumericalValueImageEffectProvider NumericalValueImageEffectProvider::create(int 
 	return effectProvider;
 }
 
+NumericalValueImageEffectProvider NumericalValueImageEffectProvider::create()
+{
+	return create(0, 1);
+}
+
 NumericalValueImageEffectProvider::NumericalValueImageEffectProvider(int const width, int const height) :
 	_effect(height, width, CV_8UC4, cv::Scalar::all(0))
 {

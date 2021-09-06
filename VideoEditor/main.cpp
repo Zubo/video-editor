@@ -3,6 +3,9 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
+#include <BLLContext.h>
+#include <VideoEffectImageProvider.h>
+
 int main(int argc, char *argv[])
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -21,6 +24,16 @@ int main(int argc, char *argv[])
     engine.load(url);
 
     engine.rootContext()->setContextProperty("executableRoot", QDir::currentPath());
+
+    QString currentPath = QDir::currentPath();
+    std::string currentPathStdStr;
+    currentPathStdStr.resize(currentPath.size());
+    std::memcpy(currentPathStdStr.data(), currentPath.toStdString().c_str(), currentPath.size());
+
+    BLLContext bllContext(currentPathStdStr);
+
+	engine.addImageProvider("circle-effect", new VideoEffectImageProvider(bllContext._CircleEffect));
+	engine.addImageProvider("number-effect", new VideoEffectImageProvider(bllContext._NumericalEffect));
 
     return app.exec();
 }

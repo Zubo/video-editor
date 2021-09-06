@@ -10,10 +10,15 @@ CircleImageEffectProvider CircleImageEffectProvider::create(int const radius, cv
     for (int i = 0; i < radius; ++i) {
         float const transitionPercent = (static_cast<float>(i) / radius);
         cv::Scalar color = (transitionPercent * firstColor) + ((1.0F - transitionPercent) * secondColor);
-        cv::circle(circleShapeProvider._effect, center, i, color, 1);
+        cv::circle(circleShapeProvider._effect, center, i, color, 2);
     }
 
     return circleShapeProvider;
+}
+
+CircleImageEffectProvider CircleImageEffectProvider::create()
+{
+    return create(10, cv::Scalar(0, 0, 255, 255), cv::Scalar(0, 255, 0, 255));
 }
 
 CircleImageEffectProvider::CircleImageEffectProvider(int const radius) :

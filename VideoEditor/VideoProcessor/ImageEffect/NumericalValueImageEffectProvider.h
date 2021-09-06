@@ -7,6 +7,7 @@ class NumericalValueImageEffectProvider : public IImageEffectProvider
 {
 public:
 	static NumericalValueImageEffectProvider create(int const num, int const fontScale);
+	static NumericalValueImageEffectProvider create();
 
 private:
     NumericalValueImageEffectProvider(int const width, int const height);

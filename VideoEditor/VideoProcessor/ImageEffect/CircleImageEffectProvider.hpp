@@ -7,6 +7,7 @@ class CircleImageEffectProvider : public IImageEffectProvider
 {
 public:
     static CircleImageEffectProvider create(int const radius, cv::Scalar const & firstColor, cv::Scalar const & secondColor);
+    static CircleImageEffectProvider create();
 
 private:
     CircleImageEffectProvider(int const radius);
