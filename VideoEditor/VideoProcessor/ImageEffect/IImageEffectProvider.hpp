@@ -10,6 +10,7 @@ public:
 
 public:
     virtual cv::Mat const & getImageEffect() const = 0;
+    virtual void randomize() = 0;
 };
 
 #endif // IIMAGEEFFECTPROVIDER_H

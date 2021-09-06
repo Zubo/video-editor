@@ -2,9 +2,11 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QTimer>
 
 #include <BLLContext.h>
 #include <VideoEffectImageProvider.h>
+#include <DelegateTimer.h>
 
 int main(int argc, char *argv[])
 {
@@ -35,5 +37,6 @@ int main(int argc, char *argv[])
 	engine.addImageProvider("circle-effect", new VideoEffectImageProvider(bllContext._CircleEffect));
 	engine.addImageProvider("number-effect", new VideoEffectImageProvider(bllContext._NumericalEffect));
 
+    DelegateTimer timer(1000, [&bllContext]() { bllContext._CircleEffect.randomize(); });
     return app.exec();
 }

@@ -8,6 +8,7 @@ CONFIG += c++17
 
 SOURCES += \
         BLLContext.cpp \
+        DelegateTimer.cpp \
         ThumbnailGenerator.cpp \
         VideoEffectImageProvider.cpp \
         VideoProcessor/Const.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     BLLContext.h \
+    DelegateTimer.h \
     ThumbnailGenerator.h \
     VideoEffectImageProvider.h \
     VideoProcessor/Const.hpp \
