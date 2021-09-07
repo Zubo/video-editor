@@ -4,7 +4,7 @@
 
 #include <opencv2/opencv.hpp>
 
-VideoEffectImageProvider::VideoEffectImageProvider(IImageEffectProvider const& imageEffectProvider) :
+VideoEffectImageProvider::VideoEffectImageProvider(AbstractVideoEffect const& imageEffectProvider) :
 	QQuickImageProvider(QQuickImageProvider::Image),
 	_imageEffectProvider(imageEffectProvider)
 {

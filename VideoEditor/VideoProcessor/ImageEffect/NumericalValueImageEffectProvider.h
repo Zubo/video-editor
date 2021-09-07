@@ -1,9 +1,9 @@
 #ifndef NUMERICALVALUEIMAGEEFFECTPROVIDER_H
 #define NUMERICALVALUEIMAGEEFFECTPROVIDER_H
 
-#include <VideoProcessor/ImageEffect/IImageEffectProvider.hpp>
+#include <VideoProcessor/ImageEffect/AbstractVideoEffect.hpp>
 
-class NumericalValueImageEffectProvider : public IImageEffectProvider
+class NumericalValueImageEffectProvider : public AbstractVideoEffect
 {
 public:
 	static NumericalValueImageEffectProvider create(int const fontScale = DEFAULT_FONT_SCALE);

@@ -15,10 +15,21 @@ Item {
                 spacing: 20
 
                 Image {
+                    id: "circleEffectImg"
+                    cache: false
                     Layout.alignment: Layout.Center
                     Layout.preferredHeight: 150
                     fillMode: Image.PreserveAspectFit
                     source: "image://circle-effect/-"
+
+                    Connections {
+                        target: circleEffectTimer
+                        function onTimerEventProcessingCompleted() {
+                            // force image reload
+                            circleEffectImg.source = "";
+                            circleEffectImg.source = "image://circle-effect/-";
+                        }
+                    }
                 }
 
                 CheckBox {
@@ -33,10 +44,21 @@ Item {
                 spacing: 20
 
                 Image {
+                    id: "numberEffectImg"
+                    cache: false
                     Layout.alignment: Layout.Center
                     Layout.preferredHeight: 150
                     fillMode: Image.PreserveAspectFit
                     source: "image://number-effect/-"
+
+                    Connections {
+                        target: numberEffectTimer
+                        function onTimerEventProcessingCompleted() {
+                            // force image reload
+                            numberEffectImg.source = "";
+                            numberEffectImg.source = "image://number-effect/-";
+                        }
+                    }
                 }
 
                 CheckBox {

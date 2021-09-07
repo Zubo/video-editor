@@ -1,12 +1,15 @@
 #ifndef IIMAGEEFFECTPROVIDER_H
 #define IIMAGEEFFECTPROVIDER_H
 
+#include <functional>
+#include <vector>
+
 #include <opencv2/opencv.hpp>
 
-class IImageEffectProvider
+class AbstractVideoEffect
 {
 public:
-    virtual ~IImageEffectProvider() = 0;
+    virtual ~AbstractVideoEffect() = 0;
 
 public:
     virtual cv::Mat const & getImageEffect() const = 0;

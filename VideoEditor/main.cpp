@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
@@ -37,6 +38,10 @@ int main(int argc, char *argv[])
 	engine.addImageProvider("circle-effect", new VideoEffectImageProvider(bllContext._CircleEffect));
 	engine.addImageProvider("number-effect", new VideoEffectImageProvider(bllContext._NumericalEffect));
 
-    DelegateTimer timer(1000, [&bllContext]() { bllContext._CircleEffect.randomize(); });
+    DelegateTimer circleEffectTimer(1000, [&bllContext]() { bllContext._CircleEffect.randomize(); });
+	engine.rootContext()->setContextProperty("circleEffectTimer", &circleEffectTimer);
+    DelegateTimer numericalEffectTimer(400, [&bllContext]() { bllContext._NumericalEffect.randomize(); });
+	engine.rootContext()->setContextProperty("numberEffectTimer", &numericalEffectTimer);
+
     return app.exec();
 }

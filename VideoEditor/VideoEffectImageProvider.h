@@ -4,18 +4,21 @@
 
 #include <QQuickImageProvider>
 
-#include <VideoProcessor/ImageEffect/IImageEffectProvider.hpp>
+#include <VideoProcessor/ImageEffect/AbstractVideoEffect.hpp>
 
 class VideoEffectImageProvider : public QQuickImageProvider
 {
 public:
-	VideoEffectImageProvider(IImageEffectProvider const & imageEffectProvider);
+	VideoEffectImageProvider(AbstractVideoEffect const & imageEffectProvider);
 
 public:
 	QImage requestImage(const QString& id, QSize* size, const QSize& requestedSize) override;
 
+signals:
+
+
 private:
-	IImageEffectProvider const & _imageEffectProvider;
+	AbstractVideoEffect const & _imageEffectProvider;
 };
 
 #endif // VIDEOEFFECTIMAGEPROVIDER_H

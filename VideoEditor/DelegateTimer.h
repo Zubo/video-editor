@@ -18,7 +18,10 @@ public:
         _delegate(std::forward<T>(delegate))
     {
         startTimer(interval);
-    }
+	}
+
+signals:
+	void timerEventProcessingCompleted();
 
 protected:
 	void timerEvent(QTimerEvent* event) override;
