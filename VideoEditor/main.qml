@@ -7,10 +7,10 @@ ApplicationWindow {
     id: mainView
     width: 640
     height: 480
-    minimumWidth: 500
-    minimumHeight: 300
+    minimumWidth: 640
+    minimumHeight: 480
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("Video Processor")
 
     property Component playOrEditView: PlayOrEditView{}
     property Component rawVideoView: VideoDirectoryView{ directoryPath: executableRoot + "/Videos/Raw"; showEdit: true }
@@ -19,7 +19,7 @@ ApplicationWindow {
 
     menuBar: MenuBar {
         Menu {
-            title: qsTr("File")
+            title: "File"
             Action { text: "Import raw videos..."; }
         }
     }
