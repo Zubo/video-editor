@@ -28,13 +28,13 @@ Item {
                 Rectangle {
                     Layout.alignment: Qt.AlignHCenter;
                     Layout.preferredWidth: 120
-                    Layout.preferredHeight: 120
+                    Layout.preferredHeight: 80
 
                     Button {
                         icon.source: "file:///" + filePath.substr(0, filePath.lastIndexOf(".")) + ".png"
                         icon.color: "transparent"
-                        anchors.margins: 10
-                        anchors.horizontalCenter: parent.horizontalCenter
+                        icon.width: parent.width
+                        icon.height: parent.height
                         onClicked: stack.push("qrc:/VideoPlayerView.qml", { videoPath: ("file:///" + filePath) })
                     }
                 }
@@ -61,7 +61,6 @@ Item {
 
                     Button {
                         anchors.fill: parent
-                        anchors.margins: 5
                         icon.source: "qrc:/Images/edit-video.png"
                         icon.color: "transparent"
                         text: "Edit"
