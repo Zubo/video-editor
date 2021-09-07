@@ -7,6 +7,7 @@
 #include <BLLContext.h>
 #include <VideoEffectImageProvider.h>
 #include <DelegateTimer.h>
+#include <VideoProcessorInterface.h>
 
 int main(int argc, char *argv[])
 {
@@ -27,7 +28,6 @@ int main(int argc, char *argv[])
     engine.load(url);
 
     engine.rootContext()->setContextProperty("executableRoot", QDir::currentPath());
-
     QString currentPath = QDir::currentPath();
     std::string currentPathStdStr;
     currentPathStdStr.resize(currentPath.size());
@@ -42,6 +42,9 @@ int main(int argc, char *argv[])
 	engine.rootContext()->setContextProperty("circleEffectTimer", &circleEffectTimer);
     DelegateTimer numericalEffectTimer(400, [&bllContext]() { bllContext._NumericalEffect.randomize(); });
 	engine.rootContext()->setContextProperty("numberEffectTimer", &numericalEffectTimer);
+
+    VideoProcessorInterface videoProcessorInterface;
+    engine.rootContext()->setContextProperty("videoProcessorInterface", &videoProcessorInterface);
 
     return app.exec();
 }

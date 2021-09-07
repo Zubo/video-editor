@@ -16,6 +16,7 @@ ApplicationWindow {
     property Component rawVideoView: VideoDirectoryView{ directoryPath: executableRoot + "/Videos/Raw"; showEdit: true }
     property Component editedVideoView: VideoDirectoryView{ directoryPath: executableRoot + "/Videos/Edited" }
     property Component videoEffectSelector: VideoEffectSelector{}
+    property Component videoProcessingProgressView: VideoProcessingProgressView{}
 
     menuBar: MenuBar {
         Menu {

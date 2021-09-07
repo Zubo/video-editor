@@ -9,5 +9,6 @@
         <file>Images/back-button.png</file>
         <file>VideoEffectSelector.qml</file>
         <file>VideoPlayerView.qml</file>
+        <file>VideoProcessingProgressView.qml</file>
     </qresource>
 </RCC>

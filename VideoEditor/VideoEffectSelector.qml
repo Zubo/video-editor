@@ -78,6 +78,10 @@ Item {
             Layout.preferredHeight: 60
             Layout.margins: 10
             text: "Apply"
+            onClicked: {
+                videoProcessorInterface.requestProcessing(circleEffectCB.checked, numericalEffectCB.checked);
+                stack.push(mainView.videoProcessingProgressView);
+            }
             enabled: circleEffectCB.checked | numericalEffectCB.checked
         }
     }

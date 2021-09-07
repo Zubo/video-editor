@@ -16,6 +16,8 @@ SOURCES += \
         VideoProcessor/ImageEffect/AbstractVideoEffect.cpp \
         VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.cpp \
         VideoProcessor/VideoThumbnailProvider.cpp \
+        VideoProcessorInterface.cpp \
+        VideoProcessorWorker.cpp \
         main.cpp
 
 HEADERS += \
@@ -27,7 +29,9 @@ HEADERS += \
     VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp \
     VideoProcessor/ImageEffect/AbstractVideoEffect.hpp \
     VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.h \
-    VideoProcessor/VideoThumbnailProvider.hpp
+    VideoProcessor/VideoThumbnailProvider.hpp \
+    VideoProcessorInterface.h \
+    VideoProcessorWorker.h
 
 INCLUDEPATH += $$PWD/ThirdParty/lib/include
 DEPENDPATH += $$PWD/ThirdParty/lib/include
