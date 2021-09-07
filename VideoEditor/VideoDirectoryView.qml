@@ -35,6 +35,7 @@ Item {
                         icon.color: "transparent"
                         anchors.margins: 10
                         anchors.horizontalCenter: parent.horizontalCenter
+                        onClicked: stack.push("qrc:/VideoPlayerView.qml", { videoPath: ("file:///" + filePath) })
                     }
                 }
 

@@ -8,5 +8,6 @@
         <file>Images/edit-video.png</file>
         <file>Images/back-button.png</file>
         <file>VideoEffectSelector.qml</file>
+        <file>VideoPlayerView.qml</file>
     </qresource>
 </RCC>

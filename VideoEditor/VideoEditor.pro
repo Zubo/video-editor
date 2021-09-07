@@ -1,4 +1,4 @@
-QT += core quick
+QT += core quick multimedia
 
 CONFIG += c++17
 
