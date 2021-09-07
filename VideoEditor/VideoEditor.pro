@@ -15,6 +15,8 @@ SOURCES += \
         VideoProcessor/ImageEffect/CircleImageEffectProvider.cpp \
         VideoProcessor/ImageEffect/AbstractVideoEffect.cpp \
         VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.cpp \
+        VideoProcessor/ImageEffect/VideoEffectApplier.cpp \
+        VideoProcessor/ImageEffect/VideoEffectApplierEntry.cpp \
         VideoProcessor/VideoThumbnailProvider.cpp \
         VideoProcessorInterface.cpp \
         VideoProcessorWorker.cpp \
@@ -29,6 +31,8 @@ HEADERS += \
     VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp \
     VideoProcessor/ImageEffect/AbstractVideoEffect.hpp \
     VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.h \
+    VideoProcessor/ImageEffect/VideoEffectApplier.h \
+    VideoProcessor/ImageEffect/VideoEffectApplierEntry.h \
     VideoProcessor/VideoThumbnailProvider.hpp \
     VideoProcessorInterface.h \
     VideoProcessorWorker.h
