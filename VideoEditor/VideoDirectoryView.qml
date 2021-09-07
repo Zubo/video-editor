@@ -33,9 +33,6 @@ Item {
                     Button {
                         icon.source: "file:///" + filePath.substr(0, filePath.lastIndexOf(".")) + ".png"
                         icon.color: "transparent"
-                        icon.width: width
-                        icon.height: height
-                        anchors.fill: parent
                         anchors.margins: 10
                         anchors.horizontalCenter: parent.horizontalCenter
                     }

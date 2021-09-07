@@ -15,7 +15,7 @@ Item {
                 spacing: 20
 
                 Image {
-                    id: "circleEffectImg"
+                    id: circleEffectImg
                     cache: false
                     Layout.alignment: Layout.Center
                     Layout.preferredHeight: 150
@@ -24,7 +24,7 @@ Item {
 
                     Connections {
                         target: circleEffectTimer
-                        function onTimerEventProcessingCompleted() {
+                        onTimerEventProcessingCompleted: {
                             // force image reload
                             circleEffectImg.source = "";
                             circleEffectImg.source = "image://circle-effect/-";
@@ -44,7 +44,7 @@ Item {
                 spacing: 20
 
                 Image {
-                    id: "numberEffectImg"
+                    id: numberEffectImg
                     cache: false
                     Layout.alignment: Layout.Center
                     Layout.preferredHeight: 150
@@ -53,7 +53,7 @@ Item {
 
                     Connections {
                         target: numberEffectTimer
-                        function onTimerEventProcessingCompleted() {
+                        onTimerEventProcessingCompleted: {
                             // force image reload
                             numberEffectImg.source = "";
                             numberEffectImg.source = "image://number-effect/-";
