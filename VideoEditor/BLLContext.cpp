@@ -10,5 +10,11 @@ BLLContext::BLLContext(std::string const & currentDirectoryPath) :
 	EditedVideosDirectoryPath(currentDirectoryPath + EDITED_DIR_NAME)
 {
 	_ThumbnailGenerator.registerPath(RawVideosDirectoryPath);
-	_ThumbnailGenerator.registerPath(EditedVideosDirectoryPath);
+    _ThumbnailGenerator.registerPath(EditedVideosDirectoryPath);
+}
+
+void BLLContext::init() const
+{
+    std::filesystem::create_directory(RawVideosDirectoryPath);
+    std::filesystem::create_directory(EditedVideosDirectoryPath);
 }

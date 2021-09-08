@@ -27,13 +27,16 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);
 
-    engine.rootContext()->setContextProperty("executableRoot", QDir::currentPath());
     QString currentPath = QDir::currentPath();
     std::string currentPathStdStr;
     currentPathStdStr.resize(currentPath.size());
     std::memcpy(currentPathStdStr.data(), currentPath.toStdString().c_str(), currentPath.size());
 
     BLLContext bllContext(currentPathStdStr);
+    bllContext.init();
+
+    engine.rootContext()->setContextProperty("rawVideosDirectoryPath", QString(bllContext.RawVideosDirectoryPath.c_str()));
+    engine.rootContext()->setContextProperty("editedVideosDirectoryPath", QString(bllContext.EditedVideosDirectoryPath.c_str()));
 
 	engine.addImageProvider("circle-effect", new VideoEffectImageProvider(bllContext._CircleEffect));
 	engine.addImageProvider("number-effect", new VideoEffectImageProvider(bllContext._NumericalEffect));

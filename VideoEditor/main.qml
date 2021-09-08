@@ -13,8 +13,8 @@ ApplicationWindow {
     title: qsTr("Video Processor")
 
     property Component playOrEditView: PlayOrEditView{}
-    property Component rawVideoView: VideoDirectoryView{ directoryPath: executableRoot + "/Videos/Raw"; showEdit: true }
-    property Component editedVideoView: VideoDirectoryView{ directoryPath: executableRoot + "/Videos/Edited" }
+    property Component rawVideoView: VideoDirectoryView{ directoryPath: rawVideosDirectoryPath; showEdit: true }
+    property Component editedVideoView: VideoDirectoryView{ directoryPath: editedVideosDirectoryPath }
     property Component videoEffectSelector: VideoEffectSelector{}
     property Component videoProcessingProgressView: VideoProcessingProgressView{}
 

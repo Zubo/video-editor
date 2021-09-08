@@ -17,7 +17,6 @@ void VideoProcessorWorker::processVideo(std::string srcPath, class VideoEffectAp
 
     auto const progressChangedCallback = [this](float const val) {
         emit progressChanged(val);
-        QThread::msleep(5);
     };
 
     videoEffectApplier.process(srcPath, progressChangedCallback);

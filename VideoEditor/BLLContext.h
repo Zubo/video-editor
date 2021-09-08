@@ -13,6 +13,9 @@ public:
     BLLContext(std::string const & currentDirectoryPath);
 
 public:
+    void init() const;
+
+public:
 	CircleImageEffectProvider _CircleEffect;
 	NumericalValueImageEffectProvider _NumericalEffect;
 	ThumbnailGenerator _ThumbnailGenerator;

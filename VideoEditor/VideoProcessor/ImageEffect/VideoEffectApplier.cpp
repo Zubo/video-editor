@@ -25,16 +25,19 @@ void VideoEffectApplier::process(std::string sourcePath, std::function<void(floa
 	int const frameHeight = inputVideoCapture.get(cv::CAP_PROP_FRAME_HEIGHT);
 	double const fps = inputVideoCapture.get(cv::CAP_PROP_FPS);
 	int const fourcc = inputVideoCapture.get(cv::CAP_PROP_FOURCC);
-	cv::VideoWriter outputVideoWriter(destPath, fourcc, fps, cv::Size(frameWidth, frameHeight));
+    cv::VideoWriter outputVideoWriter(destPath, fourcc, fps, cv::Size(frameWidth, frameHeight));
 
-	assert(outputVideoWriter.isOpened());
+    assert(outputVideoWriter.isOpened());
 
-	int const frameCount = inputVideoCapture.get(cv::CAP_PROP_FRAME_COUNT);
-	int const progressStep = frameCount / 100;
+    int const frameCount = inputVideoCapture.get(cv::CAP_PROP_FRAME_COUNT);
 
 	cv::Mat frame;
 
 	for (int i = 0; i < frameCount; ++i) {
+        if (!_isRunning) {
+            break;
+        }
+
 		inputVideoCapture >> frame;
 
 		if (frame.empty()) {
@@ -46,8 +49,8 @@ void VideoEffectApplier::process(std::string sourcePath, std::function<void(floa
 		}
 		outputVideoWriter.write(frame);
 
-		if (progressChanged && (i % progressStep == 0)) {
-			float const progress = static_cast<float>(i) / progressStep;
+        if (progressChanged && (i % 100 == 0)) {
+            float const progress = static_cast<float>(i) / frameCount;
 			progressChanged(progress);
 		}
 	}
