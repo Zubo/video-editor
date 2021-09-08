@@ -1,5 +1,4 @@
 #include <cstdlib>
-#include <ctime>
 
 #include <VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp>
 
@@ -12,10 +11,15 @@ CircleImageEffectProvider CircleImageEffectProvider::create(int const radius)
 
     return circleShapeProvider;
 }
-
 CircleImageEffectProvider::CircleImageEffectProvider(int const radius) :
 	_radius(radius),
     _effect(_radius * 2.1F, _radius * 2.1F, CV_8UC4, cv::Scalar::all(0))
+{
+}
+
+CircleImageEffectProvider::CircleImageEffectProvider(CircleImageEffectProvider const& other) :
+	_radius(other._radius),
+	_effect(other._effect.clone())
 {
 }
 
@@ -26,10 +30,14 @@ cv::Mat const & CircleImageEffectProvider::getImageEffect() const
 
 void CircleImageEffectProvider::randomize()
 {
-	std::srand(std::time(nullptr));
 	cv::Scalar firstColor(std::rand() % 256, std::rand() % 256, std::rand() % 256, 255);
 	cv::Scalar secondColor(std::rand() % 256, std::rand() % 256, std::rand() % 256, 255);
 	updateEffect(firstColor, secondColor);
+}
+
+std::unique_ptr<AbstractVideoEffect> CircleImageEffectProvider::clone() const
+{
+	return std::make_unique<CircleImageEffectProvider>(*this);
 }
 
 void CircleImageEffectProvider::updateEffect(cv::Scalar const& firstColor, cv::Scalar const& secondColor) {

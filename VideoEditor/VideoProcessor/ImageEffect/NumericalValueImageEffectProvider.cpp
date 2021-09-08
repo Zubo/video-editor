@@ -20,11 +20,22 @@ NumericalValueImageEffectProvider::NumericalValueImageEffectProvider(int const f
 {
 }
 
+NumericalValueImageEffectProvider::NumericalValueImageEffectProvider(NumericalValueImageEffectProvider const& other) :
+	_fontScale(other._fontScale),
+	_effect(other._effect.clone())
+{
+
+}
+
 void NumericalValueImageEffectProvider::randomize()
 {
-	std::srand(std::time(nullptr));
 	int const randomNum = std::rand() % 100;
 	updateEffect(randomNum);
+}
+
+std::unique_ptr<AbstractVideoEffect> NumericalValueImageEffectProvider::clone() const
+{
+	return std::make_unique<NumericalValueImageEffectProvider>(*this);
 }
 
 void NumericalValueImageEffectProvider::updateEffect(int const num)

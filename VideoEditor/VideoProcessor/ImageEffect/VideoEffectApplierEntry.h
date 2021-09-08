@@ -2,18 +2,28 @@
 #define VIDEOEFFECTAPPLIERENTRY_H
 
 #include <functional>
+#include <memory>
 
 #include <opencv2/opencv.hpp>
 
 #include <VideoProcessor/ImageEffect/AbstractVideoEffect.hpp>
 
-struct VideoEffectApplierEntry
+class VideoEffectApplierEntry
 {
 public:
-    VideoEffectApplierEntry(AbstractVideoEffect const & videoEffect, cv::Point2i pos);
+    VideoEffectApplierEntry(std::unique_ptr<AbstractVideoEffect> videoEffectUnique, cv::Point2i pos, float const randomizationInterval);
+    VideoEffectApplierEntry(VideoEffectApplierEntry const& other);
 
-    std::reference_wrapper<const AbstractVideoEffect> VideoEffect;
-    cv::Point2i Position;
+public:
+    AbstractVideoEffect & getEffect() const;
+    cv::Point2i const getPosition() const;
+    void update(float const deltaTime);
+
+private:
+    std::unique_ptr<AbstractVideoEffect> _videoEffectUnique;
+    cv::Point2i _position;
+    float _randomizationInterval;
+    float _timeSinceLastRandomizaion = 0.0F;
 };
 
 #endif // VIDEOEFFECTAPPLIERENTRY_H

@@ -1,3 +1,6 @@
+#include <cstdlib>
+#include <ctime>
+
 #include <QDir>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
@@ -32,6 +35,8 @@ int main(int argc, char *argv[])
     currentPathStdStr.resize(currentPath.size());
     std::memcpy(currentPathStdStr.data(), currentPath.toStdString().c_str(), currentPath.size());
 
+    std::srand(std::time(0));
+
     BLLContext bllContext(currentPathStdStr);
     bllContext.init();
 
@@ -41,9 +46,9 @@ int main(int argc, char *argv[])
 	engine.addImageProvider("circle-effect", new VideoEffectImageProvider(bllContext._CircleEffect));
 	engine.addImageProvider("number-effect", new VideoEffectImageProvider(bllContext._NumericalEffect));
 
-    DelegateTimer circleEffectTimer(1000, [&bllContext]() { bllContext._CircleEffect.randomize(); });
+    DelegateTimer circleEffectTimer(CircleImageEffectProvider::RANDOMIZATION_INTERVAL_MS, [&bllContext]() { bllContext._CircleEffect.randomize(); });
 	engine.rootContext()->setContextProperty("circleEffectTimer", &circleEffectTimer);
-    DelegateTimer numericalEffectTimer(400, [&bllContext]() { bllContext._NumericalEffect.randomize(); });
+    DelegateTimer numericalEffectTimer(NumericalValueImageEffectProvider::RANDOMIZATION_INTERVAL_MS, [&bllContext]() { bllContext._NumericalEffect.randomize(); });
 	engine.rootContext()->setContextProperty("numberEffectTimer", &numericalEffectTimer);
 
     VideoProcessorInterface videoProcessorInterface(bllContext);

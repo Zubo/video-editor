@@ -2,6 +2,7 @@
 #define VIDEOEFFECTAPPLIER_H
 
 #include <functional>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -15,7 +16,7 @@ public:
 	explicit VideoEffectApplier(std::string const & destDirectoryPath);
 
 public:
-    void registerEffect(AbstractVideoEffect const& effect, cv::Point2i pos = cv::Point2i());
+    void registerEffect(std::unique_ptr<AbstractVideoEffect> effectUnique, cv::Point2i pos, float randomizationInterval);
     void process(std::string sourcePath, std::function<void(float)> progressChanged, std::function<void()> onAborted);
     void abortProcessing();
 

@@ -26,13 +26,21 @@ Q_INVOKABLE void VideoProcessorInterface::requestProcessing(QVariant const proce
 
 	bool circleEffect = jsonParamsMap.value("useCircleEffect").toBool();
     if (circleEffect) {
-        applier.registerEffect(_bllContext._CircleEffect);
+        applier.registerEffect(
+            std::make_unique<CircleImageEffectProvider>(_bllContext._CircleEffect),
+            cv::Point2i(),
+            CircleImageEffectProvider::RANDOMIZATION_INTERVAL_MS
+        );
     }
 
 	bool numericalEffect = jsonParamsMap.value("useNumericalEffect").toBool();
     
     if (numericalEffect) {
-        applier.registerEffect(_bllContext._NumericalEffect);
+        applier.registerEffect(
+            std::make_unique<NumericalValueImageEffectProvider>(_bllContext._NumericalEffect),
+            cv::Point2i(),
+            NumericalValueImageEffectProvider::RANDOMIZATION_INTERVAL_MS
+        );
     }
 
     QThread& workerThread = _workerThread.emplace();

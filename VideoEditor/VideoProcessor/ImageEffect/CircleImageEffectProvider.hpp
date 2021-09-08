@@ -8,12 +8,19 @@ class CircleImageEffectProvider : public AbstractVideoEffect
 public:
     static CircleImageEffectProvider create(int const radius = DEFAULT_RADIUS);
 
+public:
+    static constexpr float RANDOMIZATION_INTERVAL_MS = 1000.0F;
+
+public:
+    CircleImageEffectProvider(CircleImageEffectProvider const& other);
+
 private:
     CircleImageEffectProvider(int const radius);
 
 public:
 	cv::Mat const& getImageEffect() const override;
-    void randomize() override;
+	void randomize() override;
+	std::unique_ptr<AbstractVideoEffect> clone() const override;
 
 private:
     void updateEffect(cv::Scalar const& firstColor, cv::Scalar const& secondColor);

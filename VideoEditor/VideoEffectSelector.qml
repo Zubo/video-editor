@@ -18,7 +18,7 @@ Item {
 
         RowLayout {
             Layout.alignment: Layout.Center
-            spacing: 10
+            spacing: 100
 
             ColumnLayout {
                 Layout.alignment: Layout.Center
@@ -58,6 +58,7 @@ Item {
                     cache: false
                     Layout.alignment: Layout.Center
                     Layout.preferredHeight: 100
+                    Layout.preferredWidth: 100
                     fillMode: Image.PreserveAspectFit
                     source: "image://number-effect/-"
 
