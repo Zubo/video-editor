@@ -54,5 +54,7 @@ int main(int argc, char *argv[])
     VideoProcessorInterface videoProcessorInterface(bllContext);
     engine.rootContext()->setContextProperty("videoProcessorInterface", &videoProcessorInterface);
 
+    videoProcessorInterface.requestThumbnailGeneration();
+
     return app.exec();
 }

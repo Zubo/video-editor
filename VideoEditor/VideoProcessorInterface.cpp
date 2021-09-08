@@ -46,14 +46,14 @@ Q_INVOKABLE void VideoProcessorInterface::requestProcessing(QVariant const proce
         );
     }
 
-    QThread& workerThread = _workerThread.emplace();
-    VideoProcessorWorker& workerObject = _workerObject.emplace();
+    QThread& workerThread = _videoProcessorThread.emplace();
+    VideoProcessorWorker& workerObject = _videoProcessorWorkingObject.emplace();
     workerObject.moveToThread(&workerThread);
     connect(&workerThread, &QThread::started, &workerObject, [srcPath, applier, &workerObject]() { workerObject.processVideo(srcPath, applier); });
-    connect(&workerObject, &VideoProcessorWorker::progressChanged, [this](float val){ emit progressChanged(val); });
+    connect(&workerObject, &VideoProcessorWorker::videoProcessingProgressChanged, [this](float val){ emit progressChanged(val); });
     connect(&workerObject, &VideoProcessorWorker::finished, [this]() { emit processingCompleted(); });
-    connect(&workerObject, &VideoProcessorWorker::finished, this, &VideoProcessorInterface::waitThreadToFinish);
-    connect(&workerObject, &VideoProcessorWorker::aborted, [this]() { emit processingAborted(); });
+    connect(&workerObject, &VideoProcessorWorker::finished, this, &VideoProcessorInterface::waitVideoProcessorThreadToFinish);
+    connect(&workerObject, &VideoProcessorWorker::aborted, [this]() { emit videoProcessingAborted(); });
     workerThread.start();
 }
 
@@ -65,22 +65,54 @@ Q_INVOKABLE QPoint VideoProcessorInterface::getVideoResolution(QString videoPath
     return QPoint(resolution.x, resolution.y);
 }
 
-void VideoProcessorInterface::stopProcessing()
+Q_INVOKABLE void VideoProcessorInterface::requestThumbnailGeneration()
 {
-    if (_workerObject.has_value())
-    {
-	    _workerObject->stop();
+    if (_thumbnailGeneratorThread.has_value() || _thumbnailGeneratorWorkerObject.has_value()) {
+        return;
     }
-    waitThreadToFinish();
+
+    QThread& workerThread = _thumbnailGeneratorThread.emplace();
+    ThumbnailGeneratorWorker& workerObject = _thumbnailGeneratorWorkerObject.emplace();
+	workerObject.registerPath(_bllContext.RawVideosDirectoryPath);
+	workerObject.registerPath(_bllContext.EditedVideosDirectoryPath);
+	workerObject.registerExtension(".mp4");
+    workerObject.registerExtension(".mkv");
+
+    workerObject.moveToThread(&workerThread);
+
+    connect(&workerThread, &QThread::started, &workerObject, &ThumbnailGeneratorWorker::generateThumbnails);
+    connect(&workerObject, &ThumbnailGeneratorWorker::generatingStopped, this, &VideoProcessorInterface::waitForThumbnailGeneratorThreadToFinish);
+
+    workerThread.start();
 }
 
-void VideoProcessorInterface::waitThreadToFinish()
+void VideoProcessorInterface::stopProcessing()
 {
-    if (_workerThread.has_value()) {
-        _workerThread->quit();
-        _workerThread->wait();
+    if (_videoProcessorWorkingObject.has_value())
+    {
+	    _videoProcessorWorkingObject->stop();
+    }
+    waitVideoProcessorThreadToFinish();
+}
 
-        _workerObject.reset();
-        _workerThread.reset();
+void VideoProcessorInterface::waitVideoProcessorThreadToFinish()
+{
+    if (_videoProcessorThread.has_value()) {
+        _videoProcessorThread->quit();
+        _videoProcessorThread->wait();
+
+        _videoProcessorWorkingObject.reset();
+        _videoProcessorThread.reset();
+    }
+}
+
+void VideoProcessorInterface::waitForThumbnailGeneratorThreadToFinish()
+{
+    if (_thumbnailGeneratorThread.has_value()) {
+        _thumbnailGeneratorThread->quit();
+        _thumbnailGeneratorThread->wait();
+
+        _thumbnailGeneratorWorkerObject.reset();
+        _thumbnailGeneratorThread.reset();
     }
 }

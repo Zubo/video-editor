@@ -16,7 +16,7 @@ void VideoProcessorWorker::processVideo(std::string srcPath, class VideoEffectAp
     _effectApplierOptionalRef.emplace(videoEffectApplier);
 
     auto const progressChangedCallback = [this](float const val) {
-        emit progressChanged(val);
+        emit videoProcessingProgressChanged(val);
     };
 
     bool isAborted = false;

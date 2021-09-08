@@ -13,7 +13,8 @@ public:
 public:
     void registerPath(std::string const & path);
     void registerExtension(std::string const& extension);
-    void generate() const;
+    void generate();
+    void abort();
 
 private:
 	void generateForDirectory(std::string const& dirPath) const;
@@ -22,6 +23,7 @@ private:
 private:
     std::vector<std::string> _directoryPaths;
     std::vector<std::string> _supportedExtensions;
+    bool _isRunning = false;
 };
 
 #endif // THUMBNAILGENERATOR_H

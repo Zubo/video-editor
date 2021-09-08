@@ -15,11 +15,24 @@ void ThumbnailGenerator::registerExtension(std::string const& extension)
 	_supportedExtensions.push_back(extension);
 }
 
-void ThumbnailGenerator::generate() const
+void ThumbnailGenerator::generate()
 {
+	_isRunning = true;
+
 	for (std::string const & dirPath : _directoryPaths) {
+		if (!_isRunning) {
+			return;
+		}
+
 		generateForDirectory(dirPath);
 	}
+
+	_isRunning = false;
+}
+
+void ThumbnailGenerator::abort()
+{
+	_isRunning = false;
 }
 
 void ThumbnailGenerator::generateForDirectory(std::string const& dirPath) const

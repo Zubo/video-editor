@@ -10,6 +10,7 @@ SOURCES += \
         BLLContext.cpp \
         DelegateTimer.cpp \
         ThumbnailGenerator.cpp \
+        ThumbnailGeneratorWorker.cpp \
         VideoEffectImageProvider.cpp \
         VideoProcessor/Const.cpp \
         VideoProcessor/ImageEffect/CircleImageEffectProvider.cpp \
@@ -27,6 +28,7 @@ HEADERS += \
     BLLContext.h \
     DelegateTimer.h \
     ThumbnailGenerator.h \
+    ThumbnailGeneratorWorker.h \
     VideoEffectImageProvider.h \
     VideoProcessor/Const.hpp \
     VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp \

@@ -24,7 +24,7 @@ public:
     void stop();
 
 signals:
-    void progressChanged(float val);
+    void videoProcessingProgressChanged(float val);
     void finished();
     void aborted();
 
