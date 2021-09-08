@@ -7,12 +7,11 @@
 
 #include <VideoProcessor/ImageEffect/AbstractVideoEffect.hpp>
 
-class VideoEffectApplierEntry
+struct VideoEffectApplierEntry
 {
 public:
     VideoEffectApplierEntry(AbstractVideoEffect const & videoEffect, cv::Point2i pos);
 
-private:
     std::reference_wrapper<const AbstractVideoEffect> VideoEffect;
     cv::Point2i Position;
 };

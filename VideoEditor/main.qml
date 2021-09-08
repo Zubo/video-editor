@@ -18,6 +18,8 @@ ApplicationWindow {
     property Component videoEffectSelector: VideoEffectSelector{}
     property Component videoProcessingProgressView: VideoProcessingProgressView{}
 
+    property string selectedVideoSrcPath: ""
+
     menuBar: MenuBar {
         Menu {
             title: "File"

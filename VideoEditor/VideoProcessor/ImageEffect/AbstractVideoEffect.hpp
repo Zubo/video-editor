@@ -12,7 +12,8 @@ public:
     virtual ~AbstractVideoEffect() = 0;
 
 public:
-    virtual cv::Mat const & getImageEffect() const = 0;
+	virtual cv::Mat const& getImageEffect() const = 0;
+    void applyToImage(cv::Mat& img, cv::Point2i const pos) const;
     virtual void randomize() = 0;
 };
 

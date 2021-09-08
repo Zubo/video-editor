@@ -12,7 +12,7 @@ private:
     CircleImageEffectProvider(int const radius);
 
 public:
-    cv::Mat const & getImageEffect() const override;
+	cv::Mat const& getImageEffect() const override;
     void randomize() override;
 
 private:

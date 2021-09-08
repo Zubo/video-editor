@@ -12,15 +12,19 @@
 class VideoEffectApplier
 {
 public:
-	VideoEffectApplier() = default;
+	explicit VideoEffectApplier(std::string const & destDirectoryPath);
 
 public:
-    void registerEffect(AbstractVideoEffect const& effect, cv::Point2i pos);
-    void process(std::string sourcePath, std::string destinationPath, std::function<void(float)> progressChanged);
+    void registerEffect(AbstractVideoEffect const& effect, cv::Point2i pos = cv::Point2i());
+    void process(std::string sourcePath, std::function<void(float)> progressChanged);
     void abortProcessing();
 
 private:
+    std::string getDestinationFilePath(std::string const& sourcePath) const;
+
+private:
     std::vector<VideoEffectApplierEntry> _entries;
+    std::string _destDirectoryPath;
     bool _isRunning = false;
 };
 

@@ -4,6 +4,7 @@ import QtQuick.Controls 2.12
 
 Item {
     id: videoEffectSelector
+
     ColumnLayout {
         spacing: 10
         anchors.fill: parent
@@ -79,7 +80,12 @@ Item {
             Layout.margins: 10
             text: "Apply"
             onClicked: {
-                videoProcessorInterface.requestProcessing(circleEffectCB.checked, numericalEffectCB.checked);
+                var data = {
+                    srcPath: mainView.selectedVideoSrcPath,
+                    useCircleEffect: circleEffectCB.checked,
+                    useNumericalEffect: numericalEffectCB.checked
+                };
+                videoProcessorInterface.requestProcessing(data);
                 stack.push(mainView.videoProcessingProgressView);
             }
             enabled: circleEffectCB.checked | numericalEffectCB.checked

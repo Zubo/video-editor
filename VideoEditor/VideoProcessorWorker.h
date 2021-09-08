@@ -18,7 +18,7 @@ public:
     VideoProcessorWorker();
 
 public slots:
-	void processVideo(std::string srcPath, std::string destPath, class VideoEffectApplier videoEffectApplier);
+	void processVideo(std::string srcPath, class VideoEffectApplier videoEffectApplier);
 
 public:
     void stop();

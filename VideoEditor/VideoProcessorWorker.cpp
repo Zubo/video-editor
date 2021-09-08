@@ -11,7 +11,7 @@ VideoProcessorWorker::VideoProcessorWorker() :
 
 }
 
-void VideoProcessorWorker::processVideo(std::string srcPath, std::string destPath, class VideoEffectApplier videoEffectApplier)
+void VideoProcessorWorker::processVideo(std::string srcPath, class VideoEffectApplier videoEffectApplier)
 {
     _effectApplierOptionalRef.emplace(videoEffectApplier);
 
@@ -20,7 +20,7 @@ void VideoProcessorWorker::processVideo(std::string srcPath, std::string destPat
         QThread::msleep(5);
     };
 
-    videoEffectApplier.process(srcPath, destPath, progressChangedCallback);
+    videoEffectApplier.process(srcPath, progressChangedCallback);
 
     _effectApplierOptionalRef.reset();
 

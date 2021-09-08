@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
     DelegateTimer numericalEffectTimer(400, [&bllContext]() { bllContext._NumericalEffect.randomize(); });
 	engine.rootContext()->setContextProperty("numberEffectTimer", &numericalEffectTimer);
 
-    VideoProcessorInterface videoProcessorInterface;
+    VideoProcessorInterface videoProcessorInterface(bllContext);
     engine.rootContext()->setContextProperty("videoProcessorInterface", &videoProcessorInterface);
 
     return app.exec();

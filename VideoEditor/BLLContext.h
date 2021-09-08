@@ -20,8 +20,8 @@ public:
 	std::string EditedVideosDirectoryPath;
 
 public:
-	static constexpr const char* const RAW_DIR_NAME = "Raw";
-	static constexpr const char* const EDITED_DIR_NAME = "Edited";
+    static constexpr const char* const RAW_DIR_NAME = "/Raw";
+    static constexpr const char* const EDITED_DIR_NAME = "/Edited";
 };
 
 #endif // BLLCONTEXT_H

@@ -14,9 +14,6 @@ public:
 public:
 	QImage requestImage(const QString& id, QSize* size, const QSize& requestedSize) override;
 
-signals:
-
-
 private:
 	AbstractVideoEffect const & _imageEffectProvider;
 };
