@@ -18,8 +18,12 @@ public:
 public:
     Q_INVOKABLE void requestProcessing(QVariant const processingParams);
 
+public slots:
+    void stopProcessing();
+
 signals:
     void progressChanged(float);
+    void processingCompleted();
 
 private:
     QThread _workerThread;

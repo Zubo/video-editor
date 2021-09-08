@@ -3,14 +3,23 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 
 Item {
-    id: videoEffectSelector
+    id: videoEffectSelecton
 
     ColumnLayout {
+        Layout.margins: 15
+
         spacing: 10
         anchors.fill: parent
-        RowLayout {
-            spacing: 100
 
+        Text {
+            Layout.alignment: Layout.Center
+            text: "Editing file: " + mainView.selectedVideoSrcPath
+        }
+
+        RowLayout {
+            Layout.alignment: Layout.Center
+
+            spacing: 10
             ColumnLayout {
                 Layout.alignment: Layout.Center
                 spacing: 20
@@ -19,7 +28,7 @@ Item {
                     id: circleEffectImg
                     cache: false
                     Layout.alignment: Layout.Center
-                    Layout.preferredHeight: 150
+                    Layout.preferredHeight: 100
                     fillMode: Image.PreserveAspectFit
                     source: "image://circle-effect/-"
 
@@ -48,7 +57,7 @@ Item {
                     id: numberEffectImg
                     cache: false
                     Layout.alignment: Layout.Center
-                    Layout.preferredHeight: 150
+                    Layout.preferredHeight: 100
                     fillMode: Image.PreserveAspectFit
                     source: "image://number-effect/-"
 
@@ -69,8 +78,6 @@ Item {
                     checked: false
                 }
             }
-
-            Layout.alignment: Layout.Center
         }
 
         Button {
