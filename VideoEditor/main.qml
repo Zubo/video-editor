@@ -19,6 +19,7 @@ ApplicationWindow {
     property Component videoProcessingProgressView: VideoProcessingProgressView{}
 
     property string selectedVideoSrcPath: ""
+    property bool backButtonDisabled: false
 
     menuBar: MenuBar {
         Menu {
@@ -37,7 +38,7 @@ ApplicationWindow {
             Button {
                 id: backButton
                 text: "Back"
-                enabled: stack.depth > 1
+                enabled: !backButtonDisabled && (stack.depth > 1)
                 onClicked: stack.pop()
             }
         }

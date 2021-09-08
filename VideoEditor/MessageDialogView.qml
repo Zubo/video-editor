@@ -6,6 +6,6 @@ Dialog {
     id: dialog
     title: "Title"
     standardButtons: Dialog.Ok
-
-    onAccepted: stack.pop()
+    x: (parent.width - width) / 2
+    y: (parent.height - height) / 2
 }

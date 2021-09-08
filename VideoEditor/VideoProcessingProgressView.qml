@@ -3,33 +3,62 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
 Item {
-    ProgressBar {
+    ColumnLayout {
         anchors.fill: parent
-        id: videoProcessingProgressBar
-        value: 0.0
 
-        Connections {
-            target: videoProcessorInterface
-            onProgressChanged: function (val) {
-                videoProcessingProgressBar.value = val;
+        Text {
+            Layout.alignment: Qt.AlignHCenter
+            text: "Processing..."
+        }
+
+        ProgressBar {
+            Layout.alignment: Qt.AlignHCenter
+            id: videoProcessingProgressBar
+            value: 0.0
+
+            Connections {
+                target: videoProcessorInterface
+                onProgressChanged: function (val) {
+                    videoProcessingProgressBar.value = val;
+                }
             }
         }
-    }
 
-    Button {
-        text: "Abort"
-        onClicked: {
-            videoProcessorInterface.stopProcessing();
-            stack.pop();
+        Button {
+            Layout.alignment: Qt.AlignHCenter
+            text: "Abort"
+            onClicked: videoProcessorInterface.stopProcessing()
         }
     }
 
     Connections {
         target: videoProcessorInterface
         onProcessingCompleted: {
+            mainView.backButtonDisabled = false;
+            stack.pop();
+
             var dialogComponent = Qt.createComponent("qrc:/MessageDialogView.qml");
-            var dialogObject = dialogComponent.createObject(mainView);
+
+            var dialogProperties =  {
+                title: "Processing successful!",
+            };
+            var dialogObject = dialogComponent.createObject(mainView, dialogProperties);
             dialogObject.open();
+        }
+
+        onProcessingAborted: {
+            mainView.backButtonDisabled = false;
+            stack.pop();
+
+            var dialogComponent = Qt.createComponent("qrc:/MessageDialogView.qml");
+
+            var dialogProperties =  {
+                title: "Processing aborted!",
+            };
+
+            var dialogObject = dialogComponent.createObject(mainView, dialogProperties);
+            dialogObject.open();
+
         }
     }
 }

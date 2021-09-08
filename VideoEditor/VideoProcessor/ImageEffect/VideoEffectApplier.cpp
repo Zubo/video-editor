@@ -15,7 +15,7 @@ void VideoEffectApplier::registerEffect(AbstractVideoEffect const& effect, cv::P
 	_entries.emplace_back(effect, pos);
 }
 
-void VideoEffectApplier::process(std::string sourcePath, std::function<void(float)> progressChanged)
+void VideoEffectApplier::process(std::string sourcePath, std::function<void(float)> progressChanged, std::function<void()> onAborted)
 {
 	_isRunning = true;
 
@@ -35,6 +35,9 @@ void VideoEffectApplier::process(std::string sourcePath, std::function<void(floa
 
 	for (int i = 0; i < frameCount; ++i) {
         if (!_isRunning) {
+			if (onAborted) {
+				onAborted();
+			}
             break;
         }
 

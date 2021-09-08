@@ -26,10 +26,9 @@ public:
 signals:
     void progressChanged(float val);
     void finished();
+    void aborted();
 
 private:
-    std::string _sourceFilePath;
-    std::string _destinationFilePath;
     EffectApplierOptionalRef _effectApplierOptionalRef;
 };
 

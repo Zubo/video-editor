@@ -16,7 +16,7 @@ public:
 
 public:
     void registerEffect(AbstractVideoEffect const& effect, cv::Point2i pos = cv::Point2i());
-    void process(std::string sourcePath, std::function<void(float)> progressChanged);
+    void process(std::string sourcePath, std::function<void(float)> progressChanged, std::function<void()> onAborted);
     void abortProcessing();
 
 private:

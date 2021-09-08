@@ -19,11 +19,22 @@ void VideoProcessorWorker::processVideo(std::string srcPath, class VideoEffectAp
         emit progressChanged(val);
     };
 
-    videoEffectApplier.process(srcPath, progressChangedCallback);
+    bool isAborted = false;
+
+    auto const abortedCallback = [this, &isAborted]() {
+        isAborted = true;
+    };
+
+    videoEffectApplier.process(srcPath, progressChangedCallback, abortedCallback);
 
     _effectApplierOptionalRef.reset();
 
-    emit finished();
+	if (isAborted) {
+		emit aborted();
+	}
+    else {
+        emit finished();
+    }
 }
 
 void VideoProcessorWorker::stop()

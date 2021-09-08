@@ -18,8 +18,8 @@ Item {
 
         RowLayout {
             Layout.alignment: Layout.Center
-
             spacing: 10
+
             ColumnLayout {
                 Layout.alignment: Layout.Center
                 spacing: 20
@@ -93,6 +93,7 @@ Item {
                     useNumericalEffect: numericalEffectCB.checked
                 };
                 videoProcessorInterface.requestProcessing(data);
+                mainView.backButtonDisabled = true;
                 stack.push(mainView.videoProcessingProgressView);
             }
             enabled: circleEffectCB.checked | numericalEffectCB.checked

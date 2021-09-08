@@ -35,16 +35,33 @@ Q_INVOKABLE void VideoProcessorInterface::requestProcessing(QVariant const proce
         applier.registerEffect(_bllContext._NumericalEffect);
     }
 
-    _workerObject.moveToThread(&_workerThread);
-    connect(&_workerThread, &QThread::started, &_workerObject, [=]() { _workerObject.processVideo(srcPath, applier); });
-    connect(&_workerObject, &VideoProcessorWorker::progressChanged, [this](float val){ emit progressChanged(val); });
-    connect(&_workerObject, &VideoProcessorWorker::finished, [this]() { emit processingCompleted(); });
-    _workerThread.start();
+    QThread& workerThread = _workerThread.emplace();
+    VideoProcessorWorker& workerObject = _workerObject.emplace();
+    workerObject.moveToThread(&workerThread);
+    connect(&workerThread, &QThread::started, &workerObject, [srcPath, applier, &workerObject]() { workerObject.processVideo(srcPath, applier); });
+    connect(&workerObject, &VideoProcessorWorker::progressChanged, [this](float val){ emit progressChanged(val); });
+    connect(&workerObject, &VideoProcessorWorker::finished, [this]() { emit processingCompleted(); });
+    connect(&workerObject, &VideoProcessorWorker::finished, this, &VideoProcessorInterface::waitThreadToFinish);
+    connect(&workerObject, &VideoProcessorWorker::aborted, [this]() { emit processingAborted(); });
+    workerThread.start();
 }
 
 void VideoProcessorInterface::stopProcessing()
 {
-	_workerThread.quit();
-	_workerObject.stop();
-	_workerThread.wait();
+    if (_workerObject.has_value())
+    {
+	    _workerObject->stop();
+    }
+    waitThreadToFinish();
+}
+
+void VideoProcessorInterface::waitThreadToFinish()
+{
+    if (_workerThread.has_value()) {
+        _workerThread->quit();
+        _workerThread->wait();
+
+        _workerObject.reset();
+        _workerThread.reset();
+    }
 }

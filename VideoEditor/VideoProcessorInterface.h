@@ -1,6 +1,8 @@
 #ifndef VIDEOPROCESSORINTERFACE_H
 #define VIDEOPROCESSORINTERFACE_H
 
+#include <optional>
+
 #include <QObject>
 #include <QThread>
 #include <QVariant>
@@ -21,13 +23,18 @@ public:
 public slots:
     void stopProcessing();
 
+
 signals:
     void progressChanged(float);
     void processingCompleted();
+    void processingAborted();
+
+private slots:
+    void waitThreadToFinish();
 
 private:
-    QThread _workerThread;
-    VideoProcessorWorker _workerObject;
+    std::optional<QThread> _workerThread;
+    std::optional<VideoProcessorWorker> _workerObject;
     BLLContext& _bllContext;
 };
 
