@@ -1,10 +1,12 @@
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
+import QtMultimedia 5.12
 
 Item {
     id: videoEffectSelecton
 
+    property var resolution: videoProcessorInterface.getVideoResolution(mainView.selectedVideoSrcPath)
     ColumnLayout {
         Layout.margins: 15
 
@@ -42,6 +44,33 @@ Item {
                     }
                 }
 
+                RowLayout {
+                    Layout.alignment: Layout.Center
+                    spacing: 20
+
+                    TextField {
+                        id: circleXPosTF
+                        placeholderText: "Enter X position"
+                        enabled: circleEffectCB.checked
+                        validator: IntValidator{
+                            bottom:0;
+                            top:resolution.x
+                        }
+                        Layout.preferredWidth: 100
+                    }
+
+                    TextField {
+                        id: circleYPosTF
+                        placeholderText: "Enter Y position"
+                        enabled: circleEffectCB.checked
+                        validator: IntValidator{
+                            bottom:0;
+                            top:resolution.y
+                        }
+                        Layout.preferredWidth: 100
+                    }
+                }
+
                 CheckBox {
                     Layout.alignment: Layout.Center
                     id: circleEffectCB
@@ -72,6 +101,33 @@ Item {
                     }
                 }
 
+                RowLayout {
+                    Layout.alignment: Layout.Center
+                    spacing: 20
+
+                    TextField {
+                        id: numericalXPosTF
+                        placeholderText: "Enter X position"
+                        enabled: numericalEffectCB.checked
+                        validator: IntValidator{
+                            bottom:0;
+                            top:resolution.x
+                        }
+                        Layout.preferredWidth: 100
+                    }
+
+                    TextField {
+                        id: numericalYPosTF
+                        placeholderText: "Enter Y position"
+                        enabled: numericalEffectCB.checked
+                        validator: IntValidator{
+                            bottom:0;
+                            top:resolution.y
+                        }
+                        Layout.preferredWidth: 100
+                    }
+                }
+
                 CheckBox {
                     id: numericalEffectCB
 
@@ -91,7 +147,9 @@ Item {
                 var data = {
                     srcPath: mainView.selectedVideoSrcPath,
                     useCircleEffect: circleEffectCB.checked,
-                    useNumericalEffect: numericalEffectCB.checked
+                    circleEffectPos: Qt.point(circleXPosTF.text, circleYPosTF.text),
+                    useNumericalEffect: numericalEffectCB.checked,
+                    numericalEffectPos: Qt.point(numericalXPosTF.text, numericalYPosTF.text),
                 };
                 videoProcessorInterface.requestProcessing(data);
                 mainView.backButtonDisabled = true;

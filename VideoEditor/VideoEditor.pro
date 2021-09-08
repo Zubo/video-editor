@@ -17,6 +17,7 @@ SOURCES += \
         VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.cpp \
         VideoProcessor/ImageEffect/VideoEffectApplier.cpp \
         VideoProcessor/ImageEffect/VideoEffectApplierEntry.cpp \
+        VideoProcessor/VideoProcessorUtils.cpp \
         VideoProcessor/VideoThumbnailProvider.cpp \
         VideoProcessorInterface.cpp \
         VideoProcessorWorker.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.h \
     VideoProcessor/ImageEffect/VideoEffectApplier.h \
     VideoProcessor/ImageEffect/VideoEffectApplierEntry.h \
+    VideoProcessor/VideoProcessorUtils.h \
     VideoProcessor/VideoThumbnailProvider.hpp \
     VideoProcessorInterface.h \
     VideoProcessorWorker.h

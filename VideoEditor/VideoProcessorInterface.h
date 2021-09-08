@@ -3,6 +3,8 @@
 
 #include <optional>
 
+#include <QPoint>
+#include <QString>
 #include <QObject>
 #include <QThread>
 #include <QVariant>
@@ -19,10 +21,10 @@ public:
 
 public:
     Q_INVOKABLE void requestProcessing(QVariant const processingParams);
+    Q_INVOKABLE QPoint getVideoResolution(QString videoPath) const;
 
 public slots:
     void stopProcessing();
-
 
 signals:
     void progressChanged(float);

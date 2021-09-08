@@ -3,6 +3,7 @@
 #include <VideoProcessorInterface.h>
 
 #include <VideoProcessor/ImageEffect/VideoEffectApplier.h>
+#include <VideoProcessor/VideoProcessorUtils.h>
 
 VideoProcessorInterface::VideoProcessorInterface(BLLContext& bllContext) :
     QObject(nullptr),
@@ -26,19 +27,21 @@ Q_INVOKABLE void VideoProcessorInterface::requestProcessing(QVariant const proce
 
 	bool circleEffect = jsonParamsMap.value("useCircleEffect").toBool();
     if (circleEffect) {
+        QPoint const pos = jsonParamsMap.value("circleEffectPos", QPoint(0, 0)).toPoint();
         applier.registerEffect(
             std::make_unique<CircleImageEffectProvider>(_bllContext._CircleEffect),
-            cv::Point2i(),
+            cv::Point2i(pos.x(), pos.y()),
             CircleImageEffectProvider::RANDOMIZATION_INTERVAL_MS
         );
     }
 
 	bool numericalEffect = jsonParamsMap.value("useNumericalEffect").toBool();
     
-    if (numericalEffect) {
+	if (numericalEffect) {
+		QPoint const pos = jsonParamsMap.value("numericalEffectPos", QPoint(0, 0)).toPoint();
         applier.registerEffect(
             std::make_unique<NumericalValueImageEffectProvider>(_bllContext._NumericalEffect),
-            cv::Point2i(),
+            cv::Point2i(pos.x(), pos.y()),
             NumericalValueImageEffectProvider::RANDOMIZATION_INTERVAL_MS
         );
     }
@@ -52,6 +55,14 @@ Q_INVOKABLE void VideoProcessorInterface::requestProcessing(QVariant const proce
     connect(&workerObject, &VideoProcessorWorker::finished, this, &VideoProcessorInterface::waitThreadToFinish);
     connect(&workerObject, &VideoProcessorWorker::aborted, [this]() { emit processingAborted(); });
     workerThread.start();
+}
+
+Q_INVOKABLE QPoint VideoProcessorInterface::getVideoResolution(QString videoPath) const
+{
+    std::string const stdStringPath = videoPath.toStdString();
+    cv::Point2i resolution = VideoProcessorUtils::getVideoResolution(stdStringPath);
+
+    return QPoint(resolution.x, resolution.y);
 }
 
 void VideoProcessorInterface::stopProcessing()
