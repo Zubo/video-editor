@@ -60,6 +60,8 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("videoProcessorInterface", &videoProcessorInterface);
 
     ThumbnailGeneratorInterface thumbnailGeneratorInterface(bllContext);
+    engine.rootContext()->setContextProperty("thumbnailGeneratorInterface", &thumbnailGeneratorInterface);
+
     thumbnailGeneratorInterface.requestThumbnailGeneration();
 
 	QObject::connect(&videoProcessorInterface, &VideoProcessorInterface::processingCompleted, &thumbnailGeneratorInterface, &ThumbnailGeneratorInterface::requestThumbnailGeneration);

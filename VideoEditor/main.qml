@@ -15,7 +15,7 @@ ApplicationWindow {
     property Component playOrEditView: PlayOrEditView{}
     property Component rawVideoView: VideoDirectoryView{ directoryPath: rawVideosDirectoryPath; showEdit: true }
     property Component editedVideoView: VideoDirectoryView{ directoryPath: editedVideosDirectoryPath }
-    property Component videoEffectSelector: VideoEffectSelector{}
+    property Component videoEffectSelector: VideoEffectSelectorView{}
     property Component videoProcessingProgressView: VideoProcessingProgressView{}
 
     property string selectedVideoSrcPath: ""

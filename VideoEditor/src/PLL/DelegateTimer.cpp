@@ -1,6 +1,6 @@
 #include <PLL/DelegateTimer.hpp>
 
-void DelegateTimer::timerEvent(QTimerEvent* event)
+void DelegateTimer::timerEvent(QTimerEvent*)
 {
 	if (_delegate) {
 		_delegate();

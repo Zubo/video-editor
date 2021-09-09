@@ -30,7 +30,7 @@ void VideoProcessorWorker::processVideo(std::string srcPath, class VideoEffectAp
     try {
         videoEffectApplier.process(srcPath, progressChangedCallback, abortedCallback);
     }
-    catch (std::exception ex) {
+    catch (std::exception const& ex) {
         emit aborted(QString("Error processing video: ") + ex.what());
         return;
     }

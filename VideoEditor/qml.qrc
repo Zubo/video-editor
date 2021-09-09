@@ -7,7 +7,7 @@
         <file>VideoDirectoryView.qml</file>
         <file>Images/edit-video.png</file>
         <file>Images/back-button.png</file>
-        <file>VideoEffectSelector.qml</file>
+        <file>VideoEffectSelectorView.qml</file>
         <file>VideoPlayerView.qml</file>
         <file>VideoProcessingProgressView.qml</file>
         <file>MessageDialogView.qml</file>

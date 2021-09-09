@@ -25,16 +25,26 @@ Item {
 
         delegate: Column {
             ColumnLayout {
+                spacing: 10
+
                 Rectangle {
                     Layout.alignment: Qt.AlignHCenter;
                     Layout.preferredWidth: 120
                     Layout.preferredHeight: 80
 
                     Button {
-                        icon.source: "file:///" + filePath.substr(0, filePath.lastIndexOf(".")) + ".png"
-                        icon.color: "transparent"
-                        icon.width: parent.width
-                        icon.height: parent.height
+                        Image {
+                            anchors.fill: parent
+                            anchors.margins: 5
+                            cache: false
+                            source: "file:///" + filePath.substr(0, filePath.lastIndexOf(".")) + ".png"
+
+                            Connections {
+                                target
+                            }
+                        }
+
+                        anchors.fill: parent
                         onClicked: stack.push("qrc:/VideoPlayerView.qml", { videoPath: ("file:///" + filePath) })
                     }
                 }
@@ -42,7 +52,7 @@ Item {
                 Rectangle {
                     Layout.alignment: Qt.AlignHCenter;
                     Layout.preferredWidth: 150
-                    Layout.preferredHeight: 10
+                    Layout.preferredHeight: 25
 
                     Text {
                         text: fileName.length > 15 ? fileName.substring(0, 15) + "..." : fileName
@@ -55,7 +65,7 @@ Item {
 
                 Rectangle {
                     Layout.alignment: Qt.AlignHCenter;
-                    Layout.preferredWidth: 150
+                    Layout.preferredWidth: 100
                     Layout.preferredHeight: 40
                     visible: showEdit
 
