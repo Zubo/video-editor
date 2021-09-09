@@ -8,6 +8,9 @@
 class ThumbnailGenerator
 {
 public:
+    static constexpr const char* THUMBNAIL_EXTENSION = ".png";
+
+public:
     ThumbnailGenerator() = default;
 
 public:

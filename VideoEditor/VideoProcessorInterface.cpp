@@ -53,7 +53,8 @@ Q_INVOKABLE void VideoProcessorInterface::requestProcessing(QVariant const proce
     connect(&workerObject, &VideoProcessorWorker::videoProcessingProgressChanged, [this](float val){ emit progressChanged(val); });
     connect(&workerObject, &VideoProcessorWorker::finished, [this]() { emit processingCompleted(); });
     connect(&workerObject, &VideoProcessorWorker::finished, this, &VideoProcessorInterface::waitVideoProcessorThreadToFinish);
-    connect(&workerObject, &VideoProcessorWorker::aborted, [this]() { emit videoProcessingAborted(); });
+    connect(&workerObject, &VideoProcessorWorker::finished, [this]() { requestThumbnailGeneration(); });
+    connect(&workerObject, &VideoProcessorWorker::aborted, [this](QString msg) { emit videoProcessingAborted(msg); });
     workerThread.start();
 }
 

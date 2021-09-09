@@ -1,5 +1,7 @@
 #include "VideoProcessorWorker.h"
 
+#include <exception>
+
 #include <QThread>
 #include <iostream>
 
@@ -25,7 +27,13 @@ void VideoProcessorWorker::processVideo(std::string srcPath, class VideoEffectAp
         isAborted = true;
     };
 
-    videoEffectApplier.process(srcPath, progressChangedCallback, abortedCallback);
+    try {
+        videoEffectApplier.process(srcPath, progressChangedCallback, abortedCallback);
+    }
+    catch (std::exception ex) {
+        emit aborted(QString("Error processing video: ") + ex.what());
+        return;
+    }
 
     _effectApplierOptionalRef.reset();
 

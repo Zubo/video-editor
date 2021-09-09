@@ -31,7 +31,7 @@ public slots:
 signals:
     void progressChanged(float);
     void processingCompleted();
-    void videoProcessingAborted();
+    void videoProcessingAborted(QString msg);
 
 private slots:
     void waitVideoProcessorThreadToFinish();

@@ -21,6 +21,7 @@ public:
     void abortProcessing();
 
 private:
+    void deleteExistingThumbnailForVideo(std::string const& videoPath);
     std::string getDestinationFilePath(std::string const& sourcePath) const;
 
 private:

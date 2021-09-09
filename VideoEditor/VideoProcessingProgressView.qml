@@ -46,14 +46,14 @@ Item {
             dialogObject.open();
         }
 
-        onProcessingAborted: {
+        onVideoProcessingAborted:  function(msg) {
             mainView.backButtonDisabled = false;
             stack.pop();
 
             var dialogComponent = Qt.createComponent("qrc:/MessageDialogView.qml");
 
             var dialogProperties =  {
-                title: "Processing aborted!",
+                title: msg === "" ? "Processing aborted!" : msg,
             };
 
             var dialogObject = dialogComponent.createObject(mainView, dialogProperties);

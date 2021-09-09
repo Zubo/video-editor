@@ -6,6 +6,7 @@
 #include <string>
 
 #include <QObject>
+#include <QString>
 
 #include <VideoProcessor/ImageEffect/VideoEffectApplier.h>
 
@@ -26,7 +27,7 @@ public:
 signals:
     void videoProcessingProgressChanged(float val);
     void finished();
-    void aborted();
+    void aborted(QString msg = "");
 
 private:
     EffectApplierOptionalRef _effectApplierOptionalRef;

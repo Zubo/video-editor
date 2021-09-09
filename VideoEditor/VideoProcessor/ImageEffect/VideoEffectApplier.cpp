@@ -1,6 +1,10 @@
 #include "VideoEffectApplier.h"
 
+#include <exception>
 #include <filesystem>
+
+#include <FilesystemPathUtils.h>
+#include <ThumbnailGenerator.h>
 
 namespace fs = std::filesystem;
 
@@ -27,7 +31,11 @@ void VideoEffectApplier::process(std::string sourcePath, std::function<void(floa
 	int const fourcc = inputVideoCapture.get(cv::CAP_PROP_FOURCC);
     cv::VideoWriter outputVideoWriter(destPath, fourcc, fps, cv::Size(frameWidth, frameHeight));
 
-    assert(outputVideoWriter.isOpened());
+	if (!outputVideoWriter.isOpened()) {
+		throw std::runtime_error("Error: Could not open output stream for processed video!");
+	}
+
+	deleteExistingThumbnailForVideo(destPath);
 
     int const frameCount = inputVideoCapture.get(cv::CAP_PROP_FRAME_COUNT);
 
@@ -73,12 +81,21 @@ void VideoEffectApplier::abortProcessing()
 	_isRunning = false;
 }
 
+void VideoEffectApplier::deleteExistingThumbnailForVideo(std::string const& videoPath)
+{
+	fs::path p = fs::path(videoPath);
+	p.replace_extension(ThumbnailGenerator::THUMBNAIL_EXTENSION);
+
+	if (fs::exists(p)) {
+		fs::remove(p);
+	}
+}
+
 std::string VideoEffectApplier::getDestinationFilePath(std::string const& sourcePath) const
 {
 	fs::path const srcP = sourcePath;
-	fs::path const filename = srcP.filename();
 	fs::path const destDirP(_destDirectoryPath);
-	fs::path destP = destDirP;
-	destP /= filename;
+	fs::path const destP = FilesystemPathUtils::replaceFilePathExtension(srcP, destDirP);
+
 	return destP.string();
 }

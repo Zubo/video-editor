@@ -42,7 +42,7 @@ void ThumbnailGenerator::generateForDirectory(std::string const& dirPath) const
 		fs::path const extension = filePath.extension();
 
 		if (isExtensionSupported(extension)) {
-			fs::path thumbnailPath = fs::path(filePath).replace_extension(fs::path(".png"));
+			fs::path thumbnailPath = fs::path(filePath).replace_extension(fs::path(THUMBNAIL_EXTENSION));
 
 			if (!fs::exists(thumbnailPath)) {
 				cv::Mat thumbnail = VideoThumbnailProvider::getThumbnail(filePath.string());

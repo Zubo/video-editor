@@ -9,6 +9,7 @@ CONFIG += c++17
 SOURCES += \
         BLLContext.cpp \
         DelegateTimer.cpp \
+        FilesystemPathUtils.cpp \
         ThumbnailGenerator.cpp \
         ThumbnailGeneratorWorker.cpp \
         VideoEffectImageProvider.cpp \
@@ -27,6 +28,7 @@ SOURCES += \
 HEADERS += \
     BLLContext.h \
     DelegateTimer.h \
+    FilesystemPathUtils.h \
     ThumbnailGenerator.h \
     ThumbnailGeneratorWorker.h \
     VideoEffectImageProvider.h \
