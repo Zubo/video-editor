@@ -1,4 +1,4 @@
-#include <VideoProcessor/ImageEffect/AbstractVideoEffect.hpp>
+#include <BLL/VideoProcessor/ImageEffect/AbstractVideoEffect.hpp>
 
 #include <vector>
 

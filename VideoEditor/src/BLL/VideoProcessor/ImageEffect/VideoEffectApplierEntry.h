@@ -6,7 +6,7 @@
 
 #include <opencv2/opencv.hpp>
 
-#include <VideoProcessor/ImageEffect/AbstractVideoEffect.hpp>
+#include <BLL/VideoProcessor/ImageEffect/AbstractVideoEffect.hpp>
 
 class VideoEffectApplierEntry
 {

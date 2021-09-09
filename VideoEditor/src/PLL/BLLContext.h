@@ -3,13 +3,17 @@
 
 #include <string>
 
-#include <VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp>
-#include <VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.h>
-#include <VideoProcessor/ImageEffect/ProgressBarVideoEffect.h>
-#include <ThumbnailGenerator.h>
+#include <BLL/VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp>
+#include <BLL/VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.h>
+#include <BLL/VideoProcessor/ImageEffect/ProgressBarVideoEffect.h>
+#include <BLL/ThumbnailGenerator.h>
 
 class BLLContext
 {
+public:
+	static constexpr const char* const RAW_DIR_NAME = "/Raw";
+	static constexpr const char* const EDITED_DIR_NAME = "/Edited";
+
 public:
     BLLContext(std::string const & currentDirectoryPath);
 
@@ -23,10 +27,6 @@ public:
 	ThumbnailGenerator _ThumbnailGenerator;
 	std::string RawVideosDirectoryPath;
 	std::string EditedVideosDirectoryPath;
-
-public:
-    static constexpr const char* const RAW_DIR_NAME = "/Raw";
-    static constexpr const char* const EDITED_DIR_NAME = "/Edited";
 };
 
 #endif // BLLCONTEXT_H

@@ -1,7 +1,7 @@
 #ifndef NUMERICALVALUEIMAGEEFFECTPROVIDER_H
 #define NUMERICALVALUEIMAGEEFFECTPROVIDER_H
 
-#include <VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.h>
+#include <BLL/VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.h>
 
 class NumericalValueImageEffectProvider : public AbstractRandomizableVideoEffect
 {
@@ -10,6 +10,9 @@ public:
 
 public:
 	static constexpr float RANDOMIZATION_INTERVAL_MS = 300.0F;
+
+private:
+	static constexpr int DEFAULT_FONT_SCALE = 10;
 
 public:
 	NumericalValueImageEffectProvider(NumericalValueImageEffectProvider const& other);
@@ -28,9 +31,6 @@ private:
 private:
 	int _fontScale;
 	cv::Mat _effect;
-
-private:
-	static constexpr int DEFAULT_FONT_SCALE = 10;
 };
 
 #endif // NUMERICALVALUEIMAGEEFFECTPROVIDER_H

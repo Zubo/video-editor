@@ -1,6 +1,6 @@
 #include <cstdlib>
 
-#include <VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp>
+#include <BLL/VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp>
 
 #include <opencv2/opencv.hpp>
 

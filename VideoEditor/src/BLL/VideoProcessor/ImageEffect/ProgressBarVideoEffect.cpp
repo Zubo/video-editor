@@ -1,7 +1,10 @@
 #include <cmath>
 #include <memory>
 
-#include <VideoProcessor/ImageEffect/ProgressBarVideoEffect.h>
+#include <BLL/VideoProcessor/ImageEffect/ProgressBarVideoEffect.h>
+
+const cv::Scalar ProgressBarVideoEffect::BACKGROUND_COLOR = cv::Scalar(255, 0, 0, 255);
+const cv::Scalar ProgressBarVideoEffect::PROGRESS_COLOR = cv::Scalar(0, 0, 255, 255);
 
 ProgressBarVideoEffect ProgressBarVideoEffect::create(float const width, float const height)
 {
@@ -51,6 +54,3 @@ void ProgressBarVideoEffect::updateEffect()
 	cv::Rect progressRect(0, 0, progress * _width, _height);
 	cv::rectangle(_effect, progressRect, PROGRESS_COLOR, -1);
 }
-
-const cv::Scalar ProgressBarVideoEffect::BACKGROUND_COLOR = cv::Scalar(255, 0, 0, 255);
-const cv::Scalar ProgressBarVideoEffect::PROGRESS_COLOR = cv::Scalar(0, 0, 255, 255);

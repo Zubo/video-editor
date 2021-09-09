@@ -1,7 +1,7 @@
 #ifndef CIRCLEIMAGEEFFECTPROVIDER_H
 #define CIRCLEIMAGEEFFECTPROVIDER_H
 
-#include <VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.h>
+#include <BLL/VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.h>
 
 class CircleImageEffectProvider : public AbstractRandomizableVideoEffect
 {
@@ -10,6 +10,9 @@ public:
 
 public:
     static constexpr float RANDOMIZATION_INTERVAL_MS = 1000.0F;
+
+private:
+	static constexpr int DEFAULT_RADIUS = 50;
 
 public:
     CircleImageEffectProvider(CircleImageEffectProvider const& other);
@@ -28,9 +31,6 @@ private:
 private:
     int _radius;
     cv::Mat _effect;
-
-private:
-    static constexpr int DEFAULT_RADIUS = 50;
 };
 
 #endif // CIRCLEIMAGEEFFECTPROVIDER_H

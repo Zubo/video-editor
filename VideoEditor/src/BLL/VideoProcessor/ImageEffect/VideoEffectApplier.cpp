@@ -3,8 +3,8 @@
 #include <exception>
 #include <filesystem>
 
-#include <FilesystemPathUtils.h>
-#include <ThumbnailGenerator.h>
+#include <BLL/FilesystemPathUtils.h>
+#include <BLL/ThumbnailGenerator.h>
 
 namespace fs = std::filesystem;
 

@@ -1,7 +1,7 @@
 #include <opencv2/opencv.hpp>
 
-#include <VideoProcessor/VideoThumbnailProvider.hpp>
-#include <ThumbnailGenerator.h>
+#include <BLL/ThumbnailGenerator.h>
+#include <BLL/VideoProcessor/VideoThumbnailProvider.hpp>
 
 namespace fs = std::filesystem;
 

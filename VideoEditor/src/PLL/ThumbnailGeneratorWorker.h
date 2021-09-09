@@ -5,7 +5,7 @@
 
 #include <QObject>
 
-#include <ThumbnailGenerator.h>
+#include <BLL/ThumbnailGenerator.h>
 
 class ThumbnailGeneratorWorker : public QObject
 {

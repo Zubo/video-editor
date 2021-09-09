@@ -3,12 +3,19 @@
 
 #include <opencv2/opencv.hpp>
 
-#include <VideoProcessor/ImageEffect/AbstractVideoEffect.hpp>
+#include <BLL/VideoProcessor/ImageEffect/AbstractVideoEffect.hpp>
 
 class ProgressBarVideoEffect : public AbstractVideoEffect
 {
 public:
 	static ProgressBarVideoEffect create(float const width, float const height);
+
+private:
+	static const cv::Scalar BACKGROUND_COLOR;
+	static const cv::Scalar PROGRESS_COLOR;
+
+private:
+	static constexpr float LOOP_DURATION_MS = 500.0F;
 
 private:
 	ProgressBarVideoEffect(float const width, float const height);
@@ -27,11 +34,6 @@ private:
 	int _width;
 	int _height;
 	cv::Mat _effect;
-
-private:
-	static constexpr float LOOP_DURATION_MS = 500.0F;
-	static const cv::Scalar BACKGROUND_COLOR;
-	static const cv::Scalar PROGRESS_COLOR;
 };
 
 #endif // PROGRESSBARVIDEOEFFECT_H

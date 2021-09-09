@@ -4,7 +4,7 @@
 
 #include <QQuickImageProvider>
 
-#include <VideoProcessor/ImageEffect/AbstractVideoEffect.hpp>
+#include <BLL/VideoProcessor/ImageEffect/AbstractVideoEffect.hpp>
 
 class VideoEffectImageProvider : public QQuickImageProvider
 {

@@ -4,8 +4,8 @@
 
 #include <opencv2/opencv.hpp>
 
-#include <VideoProcessor/Const.hpp>
-#include <VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.h>
+#include <BLL/VideoProcessor/Const.hpp>
+#include <BLL/VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.h>
 
 NumericalValueImageEffectProvider NumericalValueImageEffectProvider::create(int const fontScale)
 {

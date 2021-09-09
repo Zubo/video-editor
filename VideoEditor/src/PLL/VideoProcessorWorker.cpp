@@ -5,7 +5,7 @@
 #include <QThread>
 #include <iostream>
 
-#include <VideoProcessor/ImageEffect/VideoEffectApplier.h>
+#include <BLL/VideoProcessor/ImageEffect/VideoEffectApplier.h>
 
 VideoProcessorWorker::VideoProcessorWorker() :
     QObject(nullptr)

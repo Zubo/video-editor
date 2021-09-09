@@ -1,53 +1,55 @@
 QT += core quick multimedia
 
 CONFIG += c++17
+CONFIG -= flat
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        BLLContext.cpp \
-        DelegateTimer.cpp \
-        FilesystemPathUtils.cpp \
-        ThumbnailGenerator.cpp \
-        ThumbnailGeneratorWorker.cpp \
-        VideoEffectImageProvider.cpp \
-        VideoProcessor/Const.cpp \
-        VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.cpp \
-        VideoProcessor/ImageEffect/CircleImageEffectProvider.cpp \
-        VideoProcessor/ImageEffect/AbstractVideoEffect.cpp \
-        VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.cpp \
-        VideoProcessor/ImageEffect/ProgressBarVideoEffect.cpp \
-        VideoProcessor/ImageEffect/VideoEffectApplier.cpp \
-        VideoProcessor/ImageEffect/VideoEffectApplierEntry.cpp \
-        VideoProcessor/VideoProcessorUtils.cpp \
-        VideoProcessor/VideoThumbnailProvider.cpp \
-        VideoProcessorInterface.cpp \
-        VideoProcessorWorker.cpp \
+        src/PLL/BLLContext.cpp \
+        src/PLL/DelegateTimer.cpp \
+        src/BLL/FilesystemPathUtils.cpp \
+        src/BLL/ThumbnailGenerator.cpp \
+        src/PLL/ThumbnailGeneratorWorker.cpp \
+        src/PLL/VideoEffectImageProvider.cpp \
+        src/BLL/VideoProcessor/Const.cpp \
+        src/BLL/VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.cpp \
+        src/BLL/VideoProcessor/ImageEffect/CircleImageEffectProvider.cpp \
+        src/BLL/VideoProcessor/ImageEffect/AbstractVideoEffect.cpp \
+        src/BLL/VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.cpp \
+        src/BLL/VideoProcessor/ImageEffect/ProgressBarVideoEffect.cpp \
+        src/BLL/VideoProcessor/ImageEffect/VideoEffectApplier.cpp \
+        src/BLL/VideoProcessor/ImageEffect/VideoEffectApplierEntry.cpp \
+        src/BLL/VideoProcessor/VideoProcessorUtils.cpp \
+        src/BLL/VideoProcessor/VideoThumbnailProvider.cpp \
+        src/PLL/VideoProcessorInterface.cpp \
+        src/PLL/VideoProcessorWorker.cpp \
         main.cpp
 
 HEADERS += \
-    BLLContext.h \
-    DelegateTimer.h \
-    FilesystemPathUtils.h \
-    ThumbnailGenerator.h \
-    ThumbnailGeneratorWorker.h \
-    VideoEffectImageProvider.h \
-    VideoProcessor/Const.hpp \
-    VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.h \
-    VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp \
-    VideoProcessor/ImageEffect/AbstractVideoEffect.hpp \
-    VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.h \
-    VideoProcessor/ImageEffect/ProgressBarVideoEffect.h \
-    VideoProcessor/ImageEffect/VideoEffectApplier.h \
-    VideoProcessor/ImageEffect/VideoEffectApplierEntry.h \
-    VideoProcessor/VideoProcessorUtils.h \
-    VideoProcessor/VideoThumbnailProvider.hpp \
-    VideoProcessorInterface.h \
-    VideoProcessorWorker.h
+    src/PLL/BLLContext.h \
+    src/PLL/DelegateTimer.h \
+    src/BLL/FilesystemPathUtils.h \
+    src/BLL/ThumbnailGenerator.h \
+    src/PLL/ThumbnailGeneratorWorker.h \
+    src/PLL/VideoEffectImageProvider.h \
+    src/BLL/VideoProcessor/Const.hpp \
+    src/BLL/VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.h \
+    src/BLL/VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp \
+    src/BLL/VideoProcessor/ImageEffect/AbstractVideoEffect.hpp \
+    src/BLL/VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.h \
+    src/BLL/VideoProcessor/ImageEffect/ProgressBarVideoEffect.h \
+    src/BLL/VideoProcessor/ImageEffect/VideoEffectApplier.h \
+    src/BLL/VideoProcessor/ImageEffect/VideoEffectApplierEntry.h \
+    src/BLL/VideoProcessor/VideoProcessorUtils.h \
+    src/BLL/VideoProcessor/VideoThumbnailProvider.hpp \
+    src/PLL/VideoProcessorInterface.h \
+    src/PLL/VideoProcessorWorker.h
 
 INCLUDEPATH += $$PWD/ThirdParty/lib/include
+INCLUDEPATH += $$PWD/src
 DEPENDPATH += $$PWD/ThirdParty/lib/include
 
 RESOURCES += qml.qrc

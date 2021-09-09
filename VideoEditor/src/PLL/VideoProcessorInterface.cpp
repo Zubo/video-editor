@@ -1,9 +1,9 @@
 #include <string.h>
 
-#include <VideoProcessorInterface.h>
+#include <PLL/VideoProcessorInterface.h>
 
-#include <VideoProcessor/ImageEffect/VideoEffectApplier.h>
-#include <VideoProcessor/VideoProcessorUtils.h>
+#include <BLL/VideoProcessor/ImageEffect/VideoEffectApplier.h>
+#include <BLL/VideoProcessor/VideoProcessorUtils.h>
 
 VideoProcessorInterface::VideoProcessorInterface(BLLContext& bllContext) :
     QObject(nullptr),
