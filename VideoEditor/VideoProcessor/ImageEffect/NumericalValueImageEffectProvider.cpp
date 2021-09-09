@@ -16,11 +16,13 @@ NumericalValueImageEffectProvider NumericalValueImageEffectProvider::create(int 
 }
 
 NumericalValueImageEffectProvider::NumericalValueImageEffectProvider(int const fontScale) :
+	AbstractRandomizableVideoEffect(RANDOMIZATION_INTERVAL_MS),
 	_fontScale(fontScale)
 {
 }
 
 NumericalValueImageEffectProvider::NumericalValueImageEffectProvider(NumericalValueImageEffectProvider const& other) :
+	AbstractRandomizableVideoEffect(other),
 	_fontScale(other._fontScale),
 	_effect(other._effect.clone())
 {

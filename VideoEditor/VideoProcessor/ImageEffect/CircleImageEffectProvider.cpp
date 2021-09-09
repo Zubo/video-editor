@@ -12,12 +12,14 @@ CircleImageEffectProvider CircleImageEffectProvider::create(int const radius)
     return circleShapeProvider;
 }
 CircleImageEffectProvider::CircleImageEffectProvider(int const radius) :
+	AbstractRandomizableVideoEffect(RANDOMIZATION_INTERVAL_MS),
 	_radius(radius),
     _effect(_radius * 2.1F, _radius * 2.1F, CV_8UC4, cv::Scalar::all(0))
 {
 }
 
 CircleImageEffectProvider::CircleImageEffectProvider(CircleImageEffectProvider const& other) :
+	AbstractRandomizableVideoEffect(other),
 	_radius(other._radius),
 	_effect(other._effect.clone())
 {

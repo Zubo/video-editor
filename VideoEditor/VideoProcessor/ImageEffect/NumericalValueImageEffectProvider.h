@@ -1,9 +1,9 @@
 #ifndef NUMERICALVALUEIMAGEEFFECTPROVIDER_H
 #define NUMERICALVALUEIMAGEEFFECTPROVIDER_H
 
-#include <VideoProcessor/ImageEffect/AbstractVideoEffect.hpp>
+#include <VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.h>
 
-class NumericalValueImageEffectProvider : public AbstractVideoEffect
+class NumericalValueImageEffectProvider : public AbstractRandomizableVideoEffect
 {
 public:
 	static NumericalValueImageEffectProvider create(int const fontScale = DEFAULT_FONT_SCALE);

@@ -14,7 +14,7 @@ public:
 public:
 	virtual cv::Mat const& getImageEffect() const = 0;
     void applyToImage(cv::Mat& img, cv::Point2i const pos) const;
-    virtual void randomize() = 0;
+    virtual void update(float deltaTime) = 0;
     virtual std::unique_ptr<AbstractVideoEffect> clone() const = 0;
 };
 

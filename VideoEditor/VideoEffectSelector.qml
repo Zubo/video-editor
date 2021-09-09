@@ -135,6 +135,63 @@ Item {
                     checked: false
                 }
             }
+
+            ColumnLayout {
+                Layout.alignment: Layout.Center
+                spacing: 20
+
+                Image {
+                    id: progressEffectImg
+                    cache: false
+                    Layout.alignment: Layout.Center
+                    Layout.preferredHeight: 50
+                    Layout.preferredWidth: 200
+                    source: "image://progressbar-effect/-"
+
+                    Connections {
+                        target: numberEffectTimer
+                        onTimerEventProcessingCompleted: {
+                            // force image reload
+                            progressEffectImg.source = "";
+                            progressEffectImg.source = "image://progressbar-effect/-";
+                        }
+                    }
+                }
+
+                RowLayout {
+                    Layout.alignment: Layout.Center
+                    spacing: 20
+
+                    TextField {
+                        id: progressBarXPosTF
+                        placeholderText: "Enter X position"
+                        enabled: progressBarCB.checked
+                        validator: IntValidator{
+                            bottom:0;
+                            top:resolution.x
+                        }
+                        Layout.preferredWidth: 100
+                    }
+
+                    TextField {
+                        id: progressBarYPosTF
+                        placeholderText: "Enter Y position"
+                        enabled: progressBarCB.checked
+                        validator: IntValidator{
+                            bottom:0;
+                            top:resolution.y
+                        }
+                        Layout.preferredWidth: 100
+                    }
+                }
+
+                CheckBox {
+                    id: progressBarCB
+
+                    Layout.alignment: Layout.Center
+                    checked: false
+                }
+            }
         }
 
         Button {
@@ -150,12 +207,14 @@ Item {
                     circleEffectPos: Qt.point(circleXPosTF.text, circleYPosTF.text),
                     useNumericalEffect: numericalEffectCB.checked,
                     numericalEffectPos: Qt.point(numericalXPosTF.text, numericalYPosTF.text),
+                    useProgressbarEffect: progressBarCB.checked,
+                    progressbarEffectPos: Qt.point(progressBarXPosTF.text, progressBarYPosTF.text)
                 };
                 videoProcessorInterface.requestProcessing(data);
                 mainView.backButtonDisabled = true;
                 stack.push(mainView.videoProcessingProgressView);
             }
-            enabled: circleEffectCB.checked | numericalEffectCB.checked
+            enabled: circleEffectCB.checked | numericalEffectCB.checked | progressBarCB.checked
         }
     }
 }

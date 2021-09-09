@@ -1,9 +1,9 @@
 #ifndef CIRCLEIMAGEEFFECTPROVIDER_H
 #define CIRCLEIMAGEEFFECTPROVIDER_H
 
-#include <VideoProcessor/ImageEffect/AbstractVideoEffect.hpp>
+#include <VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.h>
 
-class CircleImageEffectProvider : public AbstractVideoEffect
+class CircleImageEffectProvider : public AbstractRandomizableVideoEffect
 {
 public:
     static CircleImageEffectProvider create(int const radius = DEFAULT_RADIUS);

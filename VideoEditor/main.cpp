@@ -11,7 +11,6 @@
 #include <VideoEffectImageProvider.h>
 #include <DelegateTimer.h>
 #include <VideoProcessorInterface.h>
-
 int main(int argc, char *argv[])
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -45,11 +44,15 @@ int main(int argc, char *argv[])
 
 	engine.addImageProvider("circle-effect", new VideoEffectImageProvider(bllContext._CircleEffect));
 	engine.addImageProvider("number-effect", new VideoEffectImageProvider(bllContext._NumericalEffect));
+	engine.addImageProvider("progressbar-effect", new VideoEffectImageProvider(bllContext._ProgressBarEffect));
 
-    DelegateTimer circleEffectTimer(CircleImageEffectProvider::RANDOMIZATION_INTERVAL_MS, [&bllContext]() { bllContext._CircleEffect.randomize(); });
+    float constexpr timerIntervalMs = 30.0F;
+    DelegateTimer circleEffectTimer(timerIntervalMs, [&bllContext, timerIntervalMs]() { bllContext._CircleEffect.update(timerIntervalMs); });
 	engine.rootContext()->setContextProperty("circleEffectTimer", &circleEffectTimer);
-    DelegateTimer numericalEffectTimer(NumericalValueImageEffectProvider::RANDOMIZATION_INTERVAL_MS, [&bllContext]() { bllContext._NumericalEffect.randomize(); });
+    DelegateTimer numericalEffectTimer(timerIntervalMs, [&bllContext, timerIntervalMs]() { bllContext._NumericalEffect.update(timerIntervalMs); });
 	engine.rootContext()->setContextProperty("numberEffectTimer", &numericalEffectTimer);
+	DelegateTimer progressBareffectTimer(timerIntervalMs, [&bllContext, timerIntervalMs]() { bllContext._ProgressBarEffect.update(timerIntervalMs); });
+	engine.rootContext()->setContextProperty("progressEffectTimer", &progressBareffectTimer);
 
     VideoProcessorInterface videoProcessorInterface(bllContext);
     engine.rootContext()->setContextProperty("videoProcessorInterface", &videoProcessorInterface);

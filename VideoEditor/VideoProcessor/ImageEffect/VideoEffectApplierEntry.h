@@ -11,18 +11,16 @@
 class VideoEffectApplierEntry
 {
 public:
-    VideoEffectApplierEntry(std::unique_ptr<AbstractVideoEffect> videoEffectUnique, cv::Point2i pos, float const randomizationInterval);
+    VideoEffectApplierEntry(std::unique_ptr<AbstractVideoEffect> videoEffectUnique, cv::Point2i pos);
     VideoEffectApplierEntry(VideoEffectApplierEntry const& other);
 
 public:
     AbstractVideoEffect & getEffect() const;
     cv::Point2i const getPosition() const;
-    void update(float const deltaTime);
 
 private:
     std::unique_ptr<AbstractVideoEffect> _videoEffectUnique;
     cv::Point2i _position;
-    float _randomizationInterval;
     float _timeSinceLastRandomizaion = 0.0F;
 };
 

@@ -5,6 +5,7 @@
 
 #include <VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp>
 #include <VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.h>
+#include <VideoProcessor/ImageEffect/ProgressBarVideoEffect.h>
 #include <ThumbnailGenerator.h>
 
 class BLLContext
@@ -18,6 +19,7 @@ public:
 public:
 	CircleImageEffectProvider _CircleEffect;
 	NumericalValueImageEffectProvider _NumericalEffect;
+	ProgressBarVideoEffect _ProgressBarEffect;
 	ThumbnailGenerator _ThumbnailGenerator;
 	std::string RawVideosDirectoryPath;
 	std::string EditedVideosDirectoryPath;

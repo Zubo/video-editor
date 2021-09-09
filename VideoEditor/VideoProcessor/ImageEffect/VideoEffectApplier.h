@@ -16,7 +16,7 @@ public:
 	explicit VideoEffectApplier(std::string const & destDirectoryPath);
 
 public:
-    void registerEffect(std::unique_ptr<AbstractVideoEffect> effectUnique, cv::Point2i pos, float randomizationInterval);
+    void registerEffect(std::unique_ptr<AbstractVideoEffect> effectUnique, cv::Point2i pos);
     void process(std::string sourcePath, std::function<void(float)> progressChanged, std::function<void()> onAborted);
     void abortProcessing();
 

@@ -14,9 +14,11 @@ SOURCES += \
         ThumbnailGeneratorWorker.cpp \
         VideoEffectImageProvider.cpp \
         VideoProcessor/Const.cpp \
+        VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.cpp \
         VideoProcessor/ImageEffect/CircleImageEffectProvider.cpp \
         VideoProcessor/ImageEffect/AbstractVideoEffect.cpp \
         VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.cpp \
+        VideoProcessor/ImageEffect/ProgressBarVideoEffect.cpp \
         VideoProcessor/ImageEffect/VideoEffectApplier.cpp \
         VideoProcessor/ImageEffect/VideoEffectApplierEntry.cpp \
         VideoProcessor/VideoProcessorUtils.cpp \
@@ -33,9 +35,11 @@ HEADERS += \
     ThumbnailGeneratorWorker.h \
     VideoEffectImageProvider.h \
     VideoProcessor/Const.hpp \
+    VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.h \
     VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp \
     VideoProcessor/ImageEffect/AbstractVideoEffect.hpp \
     VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.h \
+    VideoProcessor/ImageEffect/ProgressBarVideoEffect.h \
     VideoProcessor/ImageEffect/VideoEffectApplier.h \
     VideoProcessor/ImageEffect/VideoEffectApplierEntry.h \
     VideoProcessor/VideoProcessorUtils.h \

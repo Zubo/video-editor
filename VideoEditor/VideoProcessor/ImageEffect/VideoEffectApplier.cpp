@@ -14,9 +14,9 @@ VideoEffectApplier::VideoEffectApplier(std::string const& destDirectoryPath) :
 {
 }
 
-void VideoEffectApplier::registerEffect(std::unique_ptr<AbstractVideoEffect> videoEffectUnique, cv::Point2i pos, float randomizationInterval)
+void VideoEffectApplier::registerEffect(std::unique_ptr<AbstractVideoEffect> effectUnique, cv::Point2i pos)
 {
-	_entries.emplace_back(std::move(videoEffectUnique), pos, randomizationInterval);
+	_entries.emplace_back(std::move(effectUnique), pos);
 }
 
 void VideoEffectApplier::process(std::string sourcePath, std::function<void(float)> progressChanged, std::function<void()> onAborted)
@@ -58,8 +58,9 @@ void VideoEffectApplier::process(std::string sourcePath, std::function<void(floa
         double const posMiliseconds = inputVideoCapture.get(cv::CAP_PROP_POS_MSEC);
         float const deltaTime = static_cast<float>(posMiliseconds - lastFrameTimestamp);
 		for (auto& applierEntry : _entries) {
-            applierEntry.update(deltaTime);
-			applierEntry.getEffect().applyToImage(frame, applierEntry.getPosition());
+			AbstractVideoEffect& effect = applierEntry.getEffect();
+            effect.update(deltaTime);
+			effect.applyToImage(frame, applierEntry.getPosition());
 		}
 		outputVideoWriter.write(frame);
 

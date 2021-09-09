@@ -30,8 +30,7 @@ Q_INVOKABLE void VideoProcessorInterface::requestProcessing(QVariant const proce
         QPoint const pos = jsonParamsMap.value("circleEffectPos", QPoint(0, 0)).toPoint();
         applier.registerEffect(
             std::make_unique<CircleImageEffectProvider>(_bllContext._CircleEffect),
-            cv::Point2i(pos.x(), pos.y()),
-            CircleImageEffectProvider::RANDOMIZATION_INTERVAL_MS
+            cv::Point2i(pos.x(), pos.y())
         );
     }
 
@@ -41,8 +40,17 @@ Q_INVOKABLE void VideoProcessorInterface::requestProcessing(QVariant const proce
 		QPoint const pos = jsonParamsMap.value("numericalEffectPos", QPoint(0, 0)).toPoint();
         applier.registerEffect(
             std::make_unique<NumericalValueImageEffectProvider>(_bllContext._NumericalEffect),
-            cv::Point2i(pos.x(), pos.y()),
-            NumericalValueImageEffectProvider::RANDOMIZATION_INTERVAL_MS
+            cv::Point2i(pos.x(), pos.y())
+        );
+    }
+
+    bool progressbarEffect = jsonParamsMap.value("useProgressbarEffect").toBool();
+
+    if (progressbarEffect) {
+        QPoint const pos = jsonParamsMap.value("progressbarEffectPos", QPoint(0,0)).toPoint();
+        applier.registerEffect(
+            std::make_unique<ProgressBarVideoEffect>(_bllContext._ProgressBarEffect),
+            cv::Point2i(pos.x(), pos.y())
         );
     }
 
