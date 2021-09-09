@@ -15,7 +15,7 @@ ProgressBarVideoEffect ProgressBarVideoEffect::create(int const width, int const
 ProgressBarVideoEffect::ProgressBarVideoEffect(int const width, int const height) :
 	_width(width),
 	_height(height),
-	_effect(_width, _height, CV_8UC4, cv::Scalar::all(0))
+    _effect(_height, _width, CV_8UC4, cv::Scalar::all(0))
 {
 }
 
