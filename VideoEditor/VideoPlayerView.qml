@@ -10,7 +10,6 @@ Item {
     }
 
     Rectangle {
-        color: "black"
         anchors.fill: parent
         anchors.margins: 15
 
