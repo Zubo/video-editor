@@ -27,7 +27,8 @@ Q_INVOKABLE void ThumbnailGeneratorInterface::requestThumbnailGeneration()
 	workerObject.moveToThread(&workerThread);
 
 	connect(&workerThread, &QThread::started, &workerObject, &ThumbnailGeneratorWorker::generateThumbnails);
-    connect(&workerObject, &ThumbnailGeneratorWorker::generatingStopped, this, &ThumbnailGeneratorInterface::waitForThumbnailGeneratorThreadToFinish);
+    connect(&workerObject, &ThumbnailGeneratorWorker::generatingEnded, this, &ThumbnailGeneratorInterface::waitForThumbnailGeneratorThreadToFinish);
+	connect(&workerObject, &ThumbnailGeneratorWorker::generatingEnded, [this]() {emit generatingEnded(); });
 
 	workerThread.start();
 }

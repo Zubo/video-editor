@@ -34,13 +34,18 @@ Item {
 
                     Button {
                         Image {
+                            id: img
                             anchors.fill: parent
                             anchors.margins: 5
                             cache: false
                             source: "file:///" + filePath.substr(0, filePath.lastIndexOf(".")) + ".png"
 
                             Connections {
-                                target
+                                target: thumbnailGeneratorInterface
+                                onGeneratingEnded: {
+                                    img.source = ""
+                                    img.source = "file:///" + filePath.substr(0, filePath.lastIndexOf(".")) + ".png"
+                                }
                             }
                         }
 

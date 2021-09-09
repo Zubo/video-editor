@@ -17,6 +17,9 @@ public:
     ThumbnailGeneratorInterface(BLLContext& bllContext);
 	virtual ~ThumbnailGeneratorInterface();
 
+signals:
+	void generatingEnded();
+
 public slots:
 	void requestThumbnailGeneration();
 

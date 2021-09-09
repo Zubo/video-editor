@@ -20,7 +20,7 @@ public slots:
     void abort();
 
 signals:
-    void generatingStopped();
+    void generatingEnded();
 
 private:
     ThumbnailGenerator _thumbnailGenerator;

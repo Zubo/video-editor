@@ -8,7 +8,7 @@
 class ProgressBarVideoEffect : public AbstractVideoEffect
 {
 public:
-	static ProgressBarVideoEffect create(float const width, float const height);
+    static ProgressBarVideoEffect create(int const width, int const height);
 
 private:
 	static const cv::Scalar BACKGROUND_COLOR;
@@ -18,7 +18,7 @@ private:
 	static constexpr float LOOP_DURATION_MS = 500.0F;
 
 private:
-	ProgressBarVideoEffect(float const width, float const height);
+    ProgressBarVideoEffect(int const width, int const height);
 
 public:
 	cv::Mat const& getImageEffect() const override;

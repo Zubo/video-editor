@@ -7,12 +7,12 @@
 const cv::Scalar ProgressBarVideoEffect::BACKGROUND_COLOR = Const::BlueColorScalar;
 const cv::Scalar ProgressBarVideoEffect::PROGRESS_COLOR = Const::RedColorScalar;
 
-ProgressBarVideoEffect ProgressBarVideoEffect::create(float const width, float const height)
+ProgressBarVideoEffect ProgressBarVideoEffect::create(int const width, int const height)
 {
 	return ProgressBarVideoEffect(width, height);
 }
 
-ProgressBarVideoEffect::ProgressBarVideoEffect(float const width, float const height) :
+ProgressBarVideoEffect::ProgressBarVideoEffect(int const width, int const height) :
 	_width(width),
 	_height(height),
 	_effect(_width, _height, CV_8UC4, cv::Scalar::all(0))
@@ -43,7 +43,7 @@ float ProgressBarVideoEffect::getProgress() const
 		return 2.0F - (2.0F * timeMod / LOOP_DURATION_MS);
 	}
 	else {
-		return 2.0 * timeMod / LOOP_DURATION_MS;
+        return 2.0F * timeMod / LOOP_DURATION_MS;
 	}
 }
 

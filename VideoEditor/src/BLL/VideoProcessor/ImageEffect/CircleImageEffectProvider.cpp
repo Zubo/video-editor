@@ -14,7 +14,7 @@ CircleImageEffectProvider CircleImageEffectProvider::create(int const radius)
 CircleImageEffectProvider::CircleImageEffectProvider(int const radius) :
 	AbstractRandomizableVideoEffect(RANDOMIZATION_INTERVAL_MS),
 	_radius(radius),
-    _effect(_radius * 2.1F, _radius * 2.1F, CV_8UC4, cv::Scalar::all(0))
+    _effect(static_cast<int>(_radius * 2.1F), static_cast<int>(_radius * 2.1F), CV_8UC4, cv::Scalar::all(0))
 {
 }
 

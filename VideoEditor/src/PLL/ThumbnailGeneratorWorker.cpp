@@ -20,7 +20,7 @@ void ThumbnailGeneratorWorker::generateThumbnails()
 {
 	_thumbnailGenerator.generate();
 
-	emit generatingStopped();
+	emit generatingEnded();
 }
 
 void ThumbnailGeneratorWorker::abort()

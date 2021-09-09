@@ -24,10 +24,10 @@ void VideoEffectApplier::process(std::string sourcePath, std::function<void(floa
 
 	cv::VideoCapture inputVideoCapture(sourcePath);
 	std::string destPath = getDestinationFilePath(sourcePath);
-	int const frameWidth = inputVideoCapture.get(cv::CAP_PROP_FRAME_WIDTH);
-	int const frameHeight = inputVideoCapture.get(cv::CAP_PROP_FRAME_HEIGHT);
+    int const frameWidth = static_cast<int>(inputVideoCapture.get(cv::CAP_PROP_FRAME_WIDTH));
+    int const frameHeight = static_cast<int>(inputVideoCapture.get(cv::CAP_PROP_FRAME_HEIGHT));
 	double const fps = inputVideoCapture.get(cv::CAP_PROP_FPS);
-	int const fourcc = inputVideoCapture.get(cv::CAP_PROP_FOURCC);
+    int const fourcc = static_cast<int>(inputVideoCapture.get(cv::CAP_PROP_FOURCC));
     cv::VideoWriter outputVideoWriter(destPath, fourcc, fps, cv::Size(frameWidth, frameHeight));
 
 	if (!outputVideoWriter.isOpened()) {
@@ -36,7 +36,7 @@ void VideoEffectApplier::process(std::string sourcePath, std::function<void(floa
 
 	deleteExistingThumbnailForVideo(destPath);
 
-    int const frameCount = inputVideoCapture.get(cv::CAP_PROP_FRAME_COUNT);
+    int const frameCount = static_cast<int>(inputVideoCapture.get(cv::CAP_PROP_FRAME_COUNT));
 
 	cv::Mat frame;
     float lastFrameTimestamp = 0.0F;
@@ -68,7 +68,7 @@ void VideoEffectApplier::process(std::string sourcePath, std::function<void(floa
 			progressChanged(progress);
 		}
 
-        lastFrameTimestamp = posMiliseconds;
+        lastFrameTimestamp = static_cast<float>(posMiliseconds);
 	}
 
 	inputVideoCapture.release();
