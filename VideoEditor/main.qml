@@ -49,6 +49,30 @@ ApplicationWindow {
         }
     }
 
+    Connections {
+        target: videoImporterInterface
+        onImportingFinished: {
+            var dialogComponent = Qt.createComponent("qrc:/MessageDialogView.qml");
+
+            var dialogProperties =  {
+                title: "Video importing completed!",
+            };
+            var dialogObject = dialogComponent.createObject(mainView, dialogProperties);
+            dialogObject.open();
+        }
+
+        onImportingFailed: {
+            var dialogComponent = Qt.createComponent("qrc:/MessageDialogView.qml");
+
+            var dialogProperties =  {
+                title: "Video importing failed!",
+            };
+
+            var dialogObject = dialogComponent.createObject(mainView, dialogProperties);
+            dialogObject.open();
+        }
+    }
+
     ColumnLayout {
         Rectangle {
             id: backButtonBar

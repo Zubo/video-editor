@@ -67,8 +67,10 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("videoImporterInterface", &videoImporterInterface);
 
 	QObject::connect(&videoProcessorInterface, &VideoProcessorInterface::processingCompleted, &thumbnailGeneratorInterface, &ThumbnailGeneratorInterface::requestThumbnailGeneration);
+    QObject::connect(&videoImporterInterface, &VideoImporterInterface::importingFinished, &thumbnailGeneratorInterface, &ThumbnailGeneratorInterface::requestThumbnailGeneration);
 
     thumbnailGeneratorInterface.requestThumbnailGeneration();
+
 
     return app.exec();
 }
