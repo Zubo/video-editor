@@ -52,6 +52,6 @@ void ProgressBarVideoEffect::updateEffect()
 	float const progress = getProgress();
 	cv::Rect backgroundRect(0, 0, _width, _height);
 	cv::rectangle(_effect, backgroundRect, BACKGROUND_COLOR, -1);
-	cv::Rect progressRect(0, 0, progress * _width, _height);
+    cv::Rect progressRect(0, 0, static_cast<int>(progress * _width), _height);
 	cv::rectangle(_effect, progressRect, PROGRESS_COLOR, -1);
 }

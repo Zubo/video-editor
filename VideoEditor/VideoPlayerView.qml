@@ -12,6 +12,7 @@ Item {
     Rectangle {
         color: "black"
         anchors.fill: parent
+        anchors.margins: 15
 
         VideoOutput {
             anchors.fill:parent

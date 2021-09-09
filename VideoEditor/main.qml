@@ -29,7 +29,6 @@ ApplicationWindow {
             nameFilters: [ "Video files(*.mp4 *.mkv)"]
             selectMultiple: true
             onAccepted: {
-                console.log("You choese: " + fileUrls);
                 videoImporterInterface.importFiles(fileUrls)
             }
 
