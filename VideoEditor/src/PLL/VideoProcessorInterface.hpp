@@ -9,8 +9,8 @@
 #include <QThread>
 #include <QVariant>
 
-#include <PLL/BLLContext.h>
-#include <PLL/VideoProcessorWorker.h>
+#include <PLL/BLLContext.hpp>
+#include <PLL/VideoProcessorWorker.hpp>
 
 class VideoProcessorInterface : public QObject
 {

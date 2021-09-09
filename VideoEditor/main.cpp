@@ -7,11 +7,11 @@
 #include <QQmlContext>
 #include <QTimer>
 
-#include <PLL/BLLContext.h>
-#include <PLL/DelegateTimer.h>
+#include <PLL/BLLContext.hpp>
+#include <PLL/DelegateTimer.hpp>
 #include <PLL/ThumbnailGeneratorInterface.hpp>
-#include <PLL/VideoEffectImageProvider.h>
-#include <PLL/VideoProcessorInterface.h>
+#include <PLL/VideoEffectImageProvider.hpp>
+#include <PLL/VideoProcessorInterface.hpp>
 
 int main(int argc, char *argv[])
 {

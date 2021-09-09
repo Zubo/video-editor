@@ -1,4 +1,4 @@
-#include <PLL/DelegateTimer.h>
+#include <PLL/DelegateTimer.hpp>
 
 void DelegateTimer::timerEvent(QTimerEvent* event)
 {

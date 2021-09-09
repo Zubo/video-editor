@@ -4,9 +4,9 @@
 #include <string>
 
 #include <BLL/VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp>
-#include <BLL/VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.h>
-#include <BLL/VideoProcessor/ImageEffect/ProgressBarVideoEffect.h>
-#include <BLL/ThumbnailGenerator.h>
+#include <BLL/VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.hpp>
+#include <BLL/VideoProcessor/ImageEffect/ProgressBarVideoEffect.hpp>
+#include <BLL/ThumbnailGenerator.hpp>
 
 class BLLContext
 {

@@ -1,4 +1,4 @@
-#include <PLL/VideoEffectImageProvider.h>
+#include <PLL/VideoEffectImageProvider.hpp>
 
 #include <QImage>
 

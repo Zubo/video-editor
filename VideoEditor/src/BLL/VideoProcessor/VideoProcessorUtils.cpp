@@ -1,4 +1,4 @@
-#include <BLL/VideoProcessor/VideoProcessorUtils.h>
+#include <BLL/VideoProcessor/VideoProcessorUtils.hpp>
 
 cv::Point2i VideoProcessorUtils::getVideoResolution(std::string const& videoPath)
 {

@@ -30,25 +30,25 @@ SOURCES += \
         main.cpp
 
 HEADERS += \
-    src/PLL/BLLContext.h \
-    src/PLL/DelegateTimer.h \
-    src/BLL/FilesystemPathUtils.h \
-    src/BLL/ThumbnailGenerator.h \
+    src/PLL/BLLContext.hpp \
+    src/PLL/DelegateTimer.hpp \
+    src/BLL/FilesystemPathUtils.hpp \
+    src/BLL/ThumbnailGenerator.hpp \
     src/PLL/ThumbnailGeneratorInterface.hpp \
-    src/PLL/ThumbnailGeneratorWorker.h \
-    src/PLL/VideoEffectImageProvider.h \
+    src/PLL/ThumbnailGeneratorWorker.hpp \
+    src/PLL/VideoEffectImageProvider.hpp \
     src/BLL/VideoProcessor/Const.hpp \
-    src/BLL/VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.h \
+    src/BLL/VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.hpp \
     src/BLL/VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp \
     src/BLL/VideoProcessor/ImageEffect/AbstractVideoEffect.hpp \
-    src/BLL/VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.h \
-    src/BLL/VideoProcessor/ImageEffect/ProgressBarVideoEffect.h \
-    src/BLL/VideoProcessor/ImageEffect/VideoEffectApplier.h \
-    src/BLL/VideoProcessor/ImageEffect/VideoEffectApplierEntry.h \
-    src/BLL/VideoProcessor/VideoProcessorUtils.h \
+    src/BLL/VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.hpp \
+    src/BLL/VideoProcessor/ImageEffect/ProgressBarVideoEffect.hpp \
+    src/BLL/VideoProcessor/ImageEffect/VideoEffectApplier.hpp \
+    src/BLL/VideoProcessor/ImageEffect/VideoEffectApplierEntry.hpp \
+    src/BLL/VideoProcessor/VideoProcessorUtils.hpp \
     src/BLL/VideoProcessor/VideoThumbnailProvider.hpp \
-    src/PLL/VideoProcessorInterface.h \
-    src/PLL/VideoProcessorWorker.h
+    src/PLL/VideoProcessorInterface.hpp \
+    src/PLL/VideoProcessorWorker.hpp
 
 INCLUDEPATH += $$PWD/ThirdParty/lib/include
 INCLUDEPATH += $$PWD/src

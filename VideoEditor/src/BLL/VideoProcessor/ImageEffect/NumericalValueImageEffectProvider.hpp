@@ -1,7 +1,7 @@
 #ifndef NUMERICALVALUEIMAGEEFFECTPROVIDER_H
 #define NUMERICALVALUEIMAGEEFFECTPROVIDER_H
 
-#include <BLL/VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.h>
+#include <BLL/VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.hpp>
 
 class NumericalValueImageEffectProvider : public AbstractRandomizableVideoEffect
 {

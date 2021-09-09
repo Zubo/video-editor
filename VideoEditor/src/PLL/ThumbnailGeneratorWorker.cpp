@@ -1,4 +1,4 @@
-#include <PLL/ThumbnailGeneratorWorker.h>
+#include <PLL/ThumbnailGeneratorWorker.hpp>
 
 
 ThumbnailGeneratorWorker::ThumbnailGeneratorWorker() :

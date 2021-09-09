@@ -1,4 +1,4 @@
-#include <BLL/VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.h>
+#include <BLL/VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.hpp>
 
 AbstractRandomizableVideoEffect::AbstractRandomizableVideoEffect(float const randomizationInterval) :
 	_randomizationInterval(randomizationInterval)

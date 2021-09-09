@@ -1,7 +1,7 @@
 #include <cmath>
 #include <memory>
 
-#include <BLL/VideoProcessor/ImageEffect/ProgressBarVideoEffect.h>
+#include <BLL/VideoProcessor/ImageEffect/ProgressBarVideoEffect.hpp>
 #include <BLL/VideoProcessor/Const.hpp>
 
 const cv::Scalar ProgressBarVideoEffect::BACKGROUND_COLOR = Const::BlueColorScalar;

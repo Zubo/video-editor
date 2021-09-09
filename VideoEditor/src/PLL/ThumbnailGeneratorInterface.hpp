@@ -6,8 +6,8 @@
 #include <QObject>
 #include <QThread>
 
-#include <PLL/BLLContext.h>
-#include <PLL/ThumbnailGeneratorWorker.h>
+#include <PLL/BLLContext.hpp>
+#include <PLL/ThumbnailGeneratorWorker.hpp>
 
 class ThumbnailGeneratorInterface : public QObject
 {

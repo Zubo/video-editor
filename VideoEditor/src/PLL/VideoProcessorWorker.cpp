@@ -1,11 +1,11 @@
-#include <PLL/VideoProcessorWorker.h>
+#include <PLL/VideoProcessorWorker.hpp>
 
 #include <exception>
 
 #include <QThread>
 #include <iostream>
 
-#include <BLL/VideoProcessor/ImageEffect/VideoEffectApplier.h>
+#include <BLL/VideoProcessor/ImageEffect/VideoEffectApplier.hpp>
 
 VideoProcessorWorker::VideoProcessorWorker() :
     QObject(nullptr)

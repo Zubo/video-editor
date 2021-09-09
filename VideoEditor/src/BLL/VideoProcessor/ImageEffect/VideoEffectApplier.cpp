@@ -1,9 +1,9 @@
 #include <exception>
 #include <filesystem>
 
-#include <BLL/FilesystemPathUtils.h>
-#include <BLL/ThumbnailGenerator.h>
-#include <BLL/VideoProcessor/ImageEffect/VideoEffectApplier.h>
+#include <BLL/FilesystemPathUtils.hpp>
+#include <BLL/ThumbnailGenerator.hpp>
+#include <BLL/VideoProcessor/ImageEffect/VideoEffectApplier.hpp>
 
 namespace fs = std::filesystem;
 
