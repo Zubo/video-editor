@@ -49,6 +49,7 @@ Item {
                     Layout.alignment: Layout.Center
                     spacing: 20
                     Text {
+                        Layout.preferredWidth: 40
                         Layout.alignment: Layout.Center
                         text: "X: " + Math.floor(circleXSlider.value)
                     }
@@ -66,6 +67,7 @@ Item {
                     Layout.alignment: Layout.Center
                     spacing: 20
                     Text {
+                        Layout.preferredWidth: 40
                         Layout.alignment: Layout.Center
                         text: "Y: " + Math.floor(circleYSlider.value)
                     }
@@ -114,6 +116,7 @@ Item {
                     Layout.alignment: Layout.Center
                     spacing: 20
                     Text {
+                        Layout.preferredWidth: 40
                         Layout.alignment: Layout.Center
                         text: "X: " + Math.floor(numericalValueXSlider.value)
                     }
@@ -131,6 +134,7 @@ Item {
                     Layout.alignment: Layout.Center
                     spacing: 20
                     Text {
+                        Layout.preferredWidth: 40
                         Layout.alignment: Layout.Center
                         text: "Y: " + Math.floor(numericalValueYSlider.value)
                     }
@@ -159,9 +163,10 @@ Item {
                 Image {
                     id: progressEffectImg
                     cache: false
-                    Layout.alignment: Layout.Center
-                    Layout.preferredHeight: 50
-                    Layout.preferredWidth: 200
+                    Layout.alignment: Layout.Bottom
+                    Layout.preferredHeight: 100
+                    Layout.preferredWidth: 100
+                    fillMode: Image.PreserveAspectFit
                     source: "image://progressbar-effect/-"
 
                     Connections {
@@ -178,6 +183,7 @@ Item {
                     Layout.alignment: Layout.Center
                     spacing: 20
                     Text {
+                        Layout.preferredWidth: 40
                         Layout.alignment: Layout.Center
                         text: "X: " + Math.floor(progressbarXSlider.value)
                     }
@@ -195,6 +201,7 @@ Item {
                     Layout.alignment: Layout.Center
                     spacing: 20
                     Text {
+                        Layout.preferredWidth: 40
                         Layout.alignment: Layout.Center
                         text: "Y: " + Math.floor(progressbarYSlider.value)
                     }
