@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 	engine.rootContext()->setContextProperty("circleEffectTimer", &circleEffectTimer);
     DelegateTimer numericalEffectTimer(timerIntervalMs, [&bllContext, timerIntervalMs]() { bllContext._NumericalEffect.update(timerIntervalMs); });
 	engine.rootContext()->setContextProperty("numberEffectTimer", &numericalEffectTimer);
-	DelegateTimer progressBareffectTimer(timerIntervalMs, [&bllContext, timerIntervalMs]() { bllContext._ProgressBarEffect.update(timerIntervalMs); });
+    DelegateTimer progressBareffectTimer(timerIntervalMs, [&bllContext, timerIntervalMs]() { bllContext._ProgressBarEffect.update(timerIntervalMs); });
 	engine.rootContext()->setContextProperty("progressEffectTimer", &progressBareffectTimer);
 
     VideoProcessorInterface videoProcessorInterface(bllContext);
