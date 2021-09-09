@@ -99,6 +99,5 @@ ApplicationWindow {
                 anchors.margins: 30
             }
         }
-
     }
 }

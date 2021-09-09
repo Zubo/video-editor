@@ -24,14 +24,8 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
-    engine.load(url);
 
+    // Video editor context initialization
     QString currentPath = QDir::currentPath();
     std::string currentPathStdStr;
     currentPathStdStr.resize(currentPath.size());
@@ -45,17 +39,17 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("rawVideosDirectoryPath", QString(bllContext.RawVideosDirectoryPath.c_str()));
     engine.rootContext()->setContextProperty("editedVideosDirectoryPath", QString(bllContext.EditedVideosDirectoryPath.c_str()));
 
-	engine.addImageProvider("circle-effect", new VideoEffectImageProvider(bllContext._CircleEffect));
-	engine.addImageProvider("number-effect", new VideoEffectImageProvider(bllContext._NumericalEffect));
-	engine.addImageProvider("progressbar-effect", new VideoEffectImageProvider(bllContext._ProgressBarEffect));
+    engine.addImageProvider("circle-effect", new VideoEffectImageProvider(bllContext._CircleEffect));
+    engine.addImageProvider("number-effect", new VideoEffectImageProvider(bllContext._NumericalEffect));
+    engine.addImageProvider("progressbar-effect", new VideoEffectImageProvider(bllContext._ProgressBarEffect));
 
     float constexpr timerIntervalMs = 30.0F;
     DelegateTimer circleEffectTimer(timerIntervalMs, [&bllContext, timerIntervalMs]() { bllContext._CircleEffect.update(timerIntervalMs); });
-	engine.rootContext()->setContextProperty("circleEffectTimer", &circleEffectTimer);
+    engine.rootContext()->setContextProperty("circleEffectTimer", &circleEffectTimer);
     DelegateTimer numericalEffectTimer(timerIntervalMs, [&bllContext, timerIntervalMs]() { bllContext._NumericalEffect.update(timerIntervalMs); });
-	engine.rootContext()->setContextProperty("numberEffectTimer", &numericalEffectTimer);
+    engine.rootContext()->setContextProperty("numberEffectTimer", &numericalEffectTimer);
     DelegateTimer progressBareffectTimer(timerIntervalMs, [&bllContext, timerIntervalMs]() { bllContext._ProgressBarEffect.update(timerIntervalMs); });
-	engine.rootContext()->setContextProperty("progressEffectTimer", &progressBareffectTimer);
+    engine.rootContext()->setContextProperty("progressEffectTimer", &progressBareffectTimer);
 
     VideoProcessorInterface videoProcessorInterface(bllContext);
     engine.rootContext()->setContextProperty("videoProcessorInterface", &videoProcessorInterface);
@@ -63,14 +57,24 @@ int main(int argc, char *argv[])
     ThumbnailGeneratorInterface thumbnailGeneratorInterface(bllContext);
     engine.rootContext()->setContextProperty("thumbnailGeneratorInterface", &thumbnailGeneratorInterface);
 
-	VideoImporterInterface videoImporterInterface(bllContext.RawVideosDirectoryPath);
+    VideoImporterInterface videoImporterInterface(bllContext.RawVideosDirectoryPath);
     engine.rootContext()->setContextProperty("videoImporterInterface", &videoImporterInterface);
 
-	QObject::connect(&videoProcessorInterface, &VideoProcessorInterface::processingCompleted, &thumbnailGeneratorInterface, &ThumbnailGeneratorInterface::requestThumbnailGeneration);
+    QObject::connect(&videoProcessorInterface, &VideoProcessorInterface::processingCompleted, &thumbnailGeneratorInterface, &ThumbnailGeneratorInterface::requestThumbnailGeneration);
     QObject::connect(&videoImporterInterface, &VideoImporterInterface::importingFinished, &thumbnailGeneratorInterface, &ThumbnailGeneratorInterface::requestThumbnailGeneration);
 
-    thumbnailGeneratorInterface.requestThumbnailGeneration();
 
+    const QUrl url(QStringLiteral("qrc:/main.qml"));
+    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
+                     &app, [url](QObject *obj, const QUrl &objUrl) {
+        if (!obj && url == objUrl)
+            QCoreApplication::exit(-1);
+    }, Qt::QueuedConnection);
+    engine.load(url);
+
+    QCoreApplication::setOrganizationName("Ivo");
+
+    thumbnailGeneratorInterface.requestThumbnailGeneration();
 
     return app.exec();
 }
