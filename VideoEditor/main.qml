@@ -96,6 +96,7 @@ ApplicationWindow {
                 id: mainViewStack
                 initialItem: playOrEditView
                 anchors.fill: parent
+                anchors.margins: 30
             }
         }
 
