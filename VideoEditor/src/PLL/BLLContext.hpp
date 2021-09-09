@@ -24,7 +24,6 @@ public:
 	CircleImageEffectProvider _CircleEffect;
 	NumericalValueImageEffectProvider _NumericalEffect;
 	ProgressBarVideoEffect _ProgressBarEffect;
-	ThumbnailGenerator _ThumbnailGenerator;
 	std::string RawVideosDirectoryPath;
 	std::string EditedVideosDirectoryPath;
 };
