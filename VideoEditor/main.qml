@@ -74,6 +74,7 @@ ApplicationWindow {
     }
 
     ColumnLayout {
+        anchors.fill: parent
         Rectangle {
             id: backButtonBar
             Layout.preferredWidth: mainView.width

@@ -13,6 +13,7 @@ Rectangle {
 
         Text {
             Layout.maximumHeight: 10
+            Layout.maximumWidth: mainView.width
             Layout.alignment: Layout.Center
             text: "Editing file: " + mainView.selectedVideoSrcPath
         }
@@ -21,17 +22,17 @@ Rectangle {
             Layout.alignment: Layout.Center
             spacing: 50
 
-            VideoEffectOptions {
+            VideoEffectOptionsView {
                 id: circleEffectSelector
                 effectImageProviderSource: "image://circle-effect/-"
             }
 
-            VideoEffectOptions {
+            VideoEffectOptionsView {
                 id: numericalEffectSelector
                 effectImageProviderSource: "image://number-effect/-"
             }
 
-            VideoEffectOptions {
+            VideoEffectOptionsView {
                 id: progressbarEffectSelector
                 effectImageProviderSource: "image://progressbar-effect/-"
             }
