@@ -28,7 +28,7 @@ SOURCES += \
         src/PLL/VideoImporterInterface.cpp \
         src/PLL/VideoProcessorInterface.cpp \
         src/PLL/VideoProcessorWorker.cpp \
-        main.cpp
+        src/main.cpp
 
 HEADERS += \
     src/PLL/BLLContext.hpp \
