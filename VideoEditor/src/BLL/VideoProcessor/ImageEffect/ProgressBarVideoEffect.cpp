@@ -2,9 +2,10 @@
 #include <memory>
 
 #include <BLL/VideoProcessor/ImageEffect/ProgressBarVideoEffect.h>
+#include <BLL/VideoProcessor/Const.hpp>
 
-const cv::Scalar ProgressBarVideoEffect::BACKGROUND_COLOR = cv::Scalar(255, 0, 0, 255);
-const cv::Scalar ProgressBarVideoEffect::PROGRESS_COLOR = cv::Scalar(0, 0, 255, 255);
+const cv::Scalar ProgressBarVideoEffect::BACKGROUND_COLOR = Const::BlueColorScalar;
+const cv::Scalar ProgressBarVideoEffect::PROGRESS_COLOR = Const::RedColorScalar;
 
 ProgressBarVideoEffect ProgressBarVideoEffect::create(float const width, float const height)
 {

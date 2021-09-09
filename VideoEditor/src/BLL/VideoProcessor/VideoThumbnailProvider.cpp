@@ -1,4 +1,4 @@
-#include "VideoThumbnailProvider.hpp"
+#include <BLL/VideoProcessor/VideoThumbnailProvider.hpp>
 
 cv::Mat VideoThumbnailProvider::getThumbnail(std::string const& videoPath)
 {

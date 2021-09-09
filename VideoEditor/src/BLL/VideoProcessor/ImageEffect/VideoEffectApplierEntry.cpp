@@ -1,4 +1,4 @@
-#include "VideoEffectApplierEntry.h"
+#include <BLL/VideoProcessor/ImageEffect/VideoEffectApplierEntry.h>
 
 VideoEffectApplierEntry::VideoEffectApplierEntry(std::unique_ptr<AbstractVideoEffect> videoEffectUnique, cv::Point2i pos) :
 	_videoEffectUnique(std::move(videoEffectUnique)),

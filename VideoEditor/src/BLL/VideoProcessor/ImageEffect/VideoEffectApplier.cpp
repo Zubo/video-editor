@@ -1,10 +1,9 @@
-#include "VideoEffectApplier.h"
-
 #include <exception>
 #include <filesystem>
 
 #include <BLL/FilesystemPathUtils.h>
 #include <BLL/ThumbnailGenerator.h>
+#include <BLL/VideoProcessor/ImageEffect/VideoEffectApplier.h>
 
 namespace fs = std::filesystem;
 
