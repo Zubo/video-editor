@@ -1,4 +1,4 @@
-#include <string.h>
+#include <string>
 
 #include <PLL/VideoProcessorInterface.h>
 
@@ -60,8 +60,7 @@ Q_INVOKABLE void VideoProcessorInterface::requestProcessing(QVariant const proce
     connect(&workerThread, &QThread::started, &workerObject, [srcPath, applier, &workerObject]() { workerObject.processVideo(srcPath, applier); });
     connect(&workerObject, &VideoProcessorWorker::videoProcessingProgressChanged, [this](float val){ emit progressChanged(val); });
     connect(&workerObject, &VideoProcessorWorker::finished, [this]() { emit processingCompleted(); });
-    connect(&workerObject, &VideoProcessorWorker::finished, this, &VideoProcessorInterface::waitVideoProcessorThreadToFinish);
-    connect(&workerObject, &VideoProcessorWorker::finished, [this]() { requestThumbnailGeneration(); });
+	connect(&workerObject, &VideoProcessorWorker::finished, this, &VideoProcessorInterface::waitVideoProcessorThreadToFinish);
 	connect(&workerObject, &VideoProcessorWorker::aborted, [this](QString msg) { emit videoProcessingAborted(msg); });
 	connect(&workerObject, &VideoProcessorWorker::aborted, this, &VideoProcessorInterface::waitVideoProcessorThreadToFinish);
     workerThread.start();
@@ -73,27 +72,6 @@ Q_INVOKABLE QPoint VideoProcessorInterface::getVideoResolution(QString videoPath
     cv::Point2i resolution = VideoProcessorUtils::getVideoResolution(stdStringPath);
 
     return QPoint(resolution.x, resolution.y);
-}
-
-Q_INVOKABLE void VideoProcessorInterface::requestThumbnailGeneration()
-{
-    if (_thumbnailGeneratorThread.has_value() || _thumbnailGeneratorWorkerObject.has_value()) {
-        return;
-    }
-
-    QThread& workerThread = _thumbnailGeneratorThread.emplace();
-    ThumbnailGeneratorWorker& workerObject = _thumbnailGeneratorWorkerObject.emplace();
-	workerObject.registerPath(_bllContext.RawVideosDirectoryPath);
-	workerObject.registerPath(_bllContext.EditedVideosDirectoryPath);
-	workerObject.registerExtension(".mp4");
-    workerObject.registerExtension(".mkv");
-
-    workerObject.moveToThread(&workerThread);
-
-    connect(&workerThread, &QThread::started, &workerObject, &ThumbnailGeneratorWorker::generateThumbnails);
-    connect(&workerObject, &ThumbnailGeneratorWorker::generatingStopped, this, &VideoProcessorInterface::waitForThumbnailGeneratorThreadToFinish);
-
-    workerThread.start();
 }
 
 void VideoProcessorInterface::stopProcessing()
@@ -116,13 +94,3 @@ void VideoProcessorInterface::waitVideoProcessorThreadToFinish()
     }
 }
 
-void VideoProcessorInterface::waitForThumbnailGeneratorThreadToFinish()
-{
-    if (_thumbnailGeneratorThread.has_value()) {
-        _thumbnailGeneratorThread->quit();
-        _thumbnailGeneratorThread->wait();
-
-        _thumbnailGeneratorWorkerObject.reset();
-        _thumbnailGeneratorThread.reset();
-    }
-}

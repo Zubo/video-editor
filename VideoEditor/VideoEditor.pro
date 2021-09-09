@@ -12,6 +12,7 @@ SOURCES += \
         src/PLL/DelegateTimer.cpp \
         src/BLL/FilesystemPathUtils.cpp \
         src/BLL/ThumbnailGenerator.cpp \
+        src/PLL/ThumbnailGeneratorInterface.cpp \
         src/PLL/ThumbnailGeneratorWorker.cpp \
         src/PLL/VideoEffectImageProvider.cpp \
         src/BLL/VideoProcessor/Const.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     src/PLL/DelegateTimer.h \
     src/BLL/FilesystemPathUtils.h \
     src/BLL/ThumbnailGenerator.h \
+    src/PLL/ThumbnailGeneratorInterface.hpp \
     src/PLL/ThumbnailGeneratorWorker.h \
     src/PLL/VideoEffectImageProvider.h \
     src/BLL/VideoProcessor/Const.hpp \

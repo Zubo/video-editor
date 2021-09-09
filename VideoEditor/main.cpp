@@ -7,10 +7,12 @@
 #include <QQmlContext>
 #include <QTimer>
 
-#include <BLLContext.h>
-#include <VideoEffectImageProvider.h>
-#include <DelegateTimer.h>
-#include <VideoProcessorInterface.h>
+#include <PLL/BLLContext.h>
+#include <PLL/DelegateTimer.h>
+#include <PLL/ThumbnailGeneratorInterface.hpp>
+#include <PLL/VideoEffectImageProvider.h>
+#include <PLL/VideoProcessorInterface.h>
+
 int main(int argc, char *argv[])
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -57,7 +59,10 @@ int main(int argc, char *argv[])
     VideoProcessorInterface videoProcessorInterface(bllContext);
     engine.rootContext()->setContextProperty("videoProcessorInterface", &videoProcessorInterface);
 
-    videoProcessorInterface.requestThumbnailGeneration();
+    ThumbnailGeneratorInterface thumbnailGeneratorInterface(bllContext);
+    thumbnailGeneratorInterface.requestThumbnailGeneration();
+
+	QObject::connect(&videoProcessorInterface, &VideoProcessorInterface::processingCompleted, &thumbnailGeneratorInterface, &ThumbnailGeneratorInterface::requestThumbnailGeneration);
 
     return app.exec();
 }
