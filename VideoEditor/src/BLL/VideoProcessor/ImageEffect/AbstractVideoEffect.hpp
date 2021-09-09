@@ -1,5 +1,5 @@
-#ifndef IIMAGEEFFECTPROVIDER_H
-#define IIMAGEEFFECTPROVIDER_H
+#ifndef IABSTRACTVIDEOEFFECT_H
+#define IABSTRACTVIDEOEFFECT_H
 
 #include <functional>
 #include <vector>
@@ -18,4 +18,4 @@ public:
     virtual std::unique_ptr<AbstractVideoEffect> clone() const = 0;
 };
 
-#endif // IIMAGEEFFECTPROVIDER_H
+#endif // IABSTRACTVIDEOEFFECT_H

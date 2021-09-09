@@ -5,23 +5,23 @@
 #include <opencv2/opencv.hpp>
 
 #include <BLL/VideoProcessor/Const.hpp>
-#include <BLL/VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.hpp>
+#include <BLL/VideoProcessor/ImageEffect/NumericalVideoEffect.hpp>
 
-NumericalValueImageEffectProvider NumericalValueImageEffectProvider::create(int const fontScale)
+NumericalVideoEffect NumericalVideoEffect::create(int const fontScale)
 {
-    NumericalValueImageEffectProvider effectProvider(fontScale);
+    NumericalVideoEffect effectProvider(fontScale);
     effectProvider.randomize();
 
     return effectProvider;
 }
 
-NumericalValueImageEffectProvider::NumericalValueImageEffectProvider(int const fontScale) :
+NumericalVideoEffect::NumericalVideoEffect(int const fontScale) :
 	AbstractRandomizableVideoEffect(RANDOMIZATION_INTERVAL_MS),
 	_fontScale(fontScale)
 {
 }
 
-NumericalValueImageEffectProvider::NumericalValueImageEffectProvider(NumericalValueImageEffectProvider const& other) :
+NumericalVideoEffect::NumericalVideoEffect(NumericalVideoEffect const& other) :
 	AbstractRandomizableVideoEffect(other),
 	_fontScale(other._fontScale),
 	_effect(other._effect.clone())
@@ -29,18 +29,18 @@ NumericalValueImageEffectProvider::NumericalValueImageEffectProvider(NumericalVa
 
 }
 
-void NumericalValueImageEffectProvider::randomize()
+void NumericalVideoEffect::randomize()
 {
 	int const randomNum = std::rand() % 100;
 	updateEffect(randomNum);
 }
 
-std::unique_ptr<AbstractVideoEffect> NumericalValueImageEffectProvider::clone() const
+std::unique_ptr<AbstractVideoEffect> NumericalVideoEffect::clone() const
 {
-	return std::make_unique<NumericalValueImageEffectProvider>(*this);
+	return std::make_unique<NumericalVideoEffect>(*this);
 }
 
-void NumericalValueImageEffectProvider::updateEffect(int const num)
+void NumericalVideoEffect::updateEffect(int const num)
 {
 	std::string const text = std::to_string(num);
 	int constexpr fontFace = cv::FONT_HERSHEY_SIMPLEX;
@@ -61,7 +61,7 @@ void NumericalValueImageEffectProvider::updateEffect(int const num)
 	cv::putText(_effect, text, textOrg, fontFace, _fontScale, Const::BlueColorScalar, 2);
 }
 
-cv::Mat const& NumericalValueImageEffectProvider::getImageEffect() const
+cv::Mat const& NumericalVideoEffect::getImageEffect() const
 {
     return _effect;
 }

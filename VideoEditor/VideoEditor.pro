@@ -17,9 +17,9 @@ SOURCES += \
         src/PLL/VideoEffectImageProvider.cpp \
         src/BLL/VideoProcessor/Const.cpp \
         src/BLL/VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.cpp \
-        src/BLL/VideoProcessor/ImageEffect/CircleImageEffectProvider.cpp \
+        src/BLL/VideoProcessor/ImageEffect/CircleVideoEffect.cpp \
         src/BLL/VideoProcessor/ImageEffect/AbstractVideoEffect.cpp \
-        src/BLL/VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.cpp \
+        src/BLL/VideoProcessor/ImageEffect/NumericalVideoEffect.cpp \
         src/BLL/VideoProcessor/ImageEffect/ProgressBarVideoEffect.cpp \
         src/BLL/VideoProcessor/ImageEffect/VideoEffectApplier.cpp \
         src/BLL/VideoProcessor/ImageEffect/VideoEffectApplierEntry.cpp \
@@ -39,9 +39,9 @@ HEADERS += \
     src/PLL/VideoEffectImageProvider.hpp \
     src/BLL/VideoProcessor/Const.hpp \
     src/BLL/VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.hpp \
-    src/BLL/VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp \
+    src/BLL/VideoProcessor/ImageEffect/CircleVideoEffect.hpp \
     src/BLL/VideoProcessor/ImageEffect/AbstractVideoEffect.hpp \
-    src/BLL/VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.hpp \
+    src/BLL/VideoProcessor/ImageEffect/NumericalVideoEffect.hpp \
     src/BLL/VideoProcessor/ImageEffect/ProgressBarVideoEffect.hpp \
     src/BLL/VideoProcessor/ImageEffect/VideoEffectApplier.hpp \
     src/BLL/VideoProcessor/ImageEffect/VideoEffectApplierEntry.hpp \

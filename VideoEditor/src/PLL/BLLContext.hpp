@@ -3,8 +3,8 @@
 
 #include <string>
 
-#include <BLL/VideoProcessor/ImageEffect/CircleImageEffectProvider.hpp>
-#include <BLL/VideoProcessor/ImageEffect/NumericalValueImageEffectProvider.hpp>
+#include <BLL/VideoProcessor/ImageEffect/CircleVideoEffect.hpp>
+#include <BLL/VideoProcessor/ImageEffect/NumericalVideoEffect.hpp>
 #include <BLL/VideoProcessor/ImageEffect/ProgressBarVideoEffect.hpp>
 #include <BLL/ThumbnailGenerator.hpp>
 
@@ -21,8 +21,8 @@ public:
     void init() const;
 
 public:
-	CircleImageEffectProvider _CircleEffect;
-	NumericalValueImageEffectProvider _NumericalEffect;
+	CircleVideoEffect _CircleEffect;
+	NumericalVideoEffect _NumericalEffect;
 	ProgressBarVideoEffect _ProgressBarEffect;
 	std::string RawVideosDirectoryPath;
 	std::string EditedVideosDirectoryPath;

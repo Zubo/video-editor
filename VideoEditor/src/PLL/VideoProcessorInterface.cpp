@@ -29,7 +29,7 @@ Q_INVOKABLE void VideoProcessorInterface::requestProcessing(QVariant const proce
     if (circleEffect) {
         QPoint const pos = jsonParamsMap.value("circleEffectPos", QPoint(0, 0)).toPoint();
         applier.registerEffect(
-            std::make_unique<CircleImageEffectProvider>(_bllContext._CircleEffect),
+            std::make_unique<CircleVideoEffect>(_bllContext._CircleEffect),
             cv::Point2i(pos.x(), pos.y())
         );
     }
@@ -39,7 +39,7 @@ Q_INVOKABLE void VideoProcessorInterface::requestProcessing(QVariant const proce
 	if (numericalEffect) {
 		QPoint const pos = jsonParamsMap.value("numericalEffectPos", QPoint(0, 0)).toPoint();
         applier.registerEffect(
-            std::make_unique<NumericalValueImageEffectProvider>(_bllContext._NumericalEffect),
+            std::make_unique<NumericalVideoEffect>(_bllContext._NumericalEffect),
             cv::Point2i(pos.x(), pos.y())
         );
     }
