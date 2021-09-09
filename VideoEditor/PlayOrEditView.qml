@@ -16,7 +16,7 @@ Item {
 
             text: qsTr("Raw Videos")
 
-            onClicked: stack.push(mainView.rawVideoView)
+            onClicked: mainViewStack.push(mainView.rawVideoView)
 
             ToolTip.visible: hovered
             ToolTip.text: qsTr("Edit or play raw videos")
@@ -30,7 +30,7 @@ Item {
 
             text: qsTr("Edited Videos")
 
-            onClicked: stack.push(mainView.editedVideoView)
+            onClicked: mainViewStack.push(mainView.editedVideoView)
 
             ToolTip.visible: hovered
             ToolTip.text: qsTr("Play edited videos")

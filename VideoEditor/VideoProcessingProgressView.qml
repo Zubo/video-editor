@@ -35,7 +35,7 @@ Item {
         target: videoProcessorInterface
         onProcessingCompleted: {
             mainView.backButtonDisabled = false;
-            stack.pop();
+            mainViewStack.pop();
 
             var dialogComponent = Qt.createComponent("qrc:/MessageDialogView.qml");
 
@@ -48,7 +48,7 @@ Item {
 
         onVideoProcessingAborted:  function(msg) {
             mainView.backButtonDisabled = false;
-            stack.pop();
+            mainViewStack.pop();
 
             var dialogComponent = Qt.createComponent("qrc:/MessageDialogView.qml");
 

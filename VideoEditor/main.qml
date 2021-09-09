@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
+import QtQuick.Dialogs 1.2
 
 ApplicationWindow {
     id: mainView
@@ -21,10 +22,30 @@ ApplicationWindow {
     property string selectedVideoSrcPath: ""
     property bool backButtonDisabled: false
 
+    Component {
+        id: importFileDialogComponent
+        FileDialog {
+            title: "Select videos to import"
+            nameFilters: [ "Video files(*.mp4 *.mkv)"]
+            selectMultiple: true
+            onAccepted: {
+                console.log("You choese: " + fileUrls);
+                videoImporterInterface.importFiles(fileUrls)
+            }
+
+            Component.onCompleted: visible = true
+        }
+    }
+
     menuBar: MenuBar {
         Menu {
             title: "File"
-            Action { text: "Import raw videos..."; }
+            Action {
+                text: "Import raw videos..."
+                onTriggered: {
+                    var dialog = importFileDialogComponent.createObject(mainView)
+                }
+            }
         }
     }
 
@@ -38,8 +59,8 @@ ApplicationWindow {
             Button {
                 id: backButton
                 text: "Back"
-                enabled: !backButtonDisabled && (stack.depth > 1)
-                onClicked: stack.pop()
+                enabled: !backButtonDisabled && (mainViewStack.depth > 1)
+                onClicked: mainViewStack.pop()
             }
         }
 
@@ -48,7 +69,7 @@ ApplicationWindow {
             Layout.preferredHeight: mainView.height - menuBar.height
 
             StackView {
-                id: stack
+                id: mainViewStack
                 initialItem: playOrEditView
                 anchors.fill: parent
             }

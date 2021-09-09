@@ -25,6 +25,7 @@ SOURCES += \
         src/BLL/VideoProcessor/VideoEffect/VideoEffectApplierEntry.cpp \
         src/BLL/VideoProcessor/VideoProcessorUtils.cpp \
         src/BLL/VideoProcessor/VideoThumbnailProvider.cpp \
+        src/PLL/VideoImporterInterface.cpp \
         src/PLL/VideoProcessorInterface.cpp \
         src/PLL/VideoProcessorWorker.cpp \
         main.cpp
@@ -47,6 +48,7 @@ HEADERS += \
     src/BLL/VideoProcessor/VideoEffect/VideoEffectApplierEntry.hpp \
     src/BLL/VideoProcessor/VideoProcessorUtils.hpp \
     src/BLL/VideoProcessor/VideoThumbnailProvider.hpp \
+    src/PLL/VideoImporterInterface.hpp \
     src/PLL/VideoProcessorInterface.hpp \
     src/PLL/VideoProcessorWorker.hpp
 

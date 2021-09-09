@@ -11,6 +11,7 @@
 #include <PLL/DelegateTimer.hpp>
 #include <PLL/ThumbnailGeneratorInterface.hpp>
 #include <PLL/VideoEffectImageProvider.hpp>
+#include <PLL/VideoImporterInterface.hpp>
 #include <PLL/VideoProcessorInterface.hpp>
 
 int main(int argc, char *argv[])
@@ -62,9 +63,12 @@ int main(int argc, char *argv[])
     ThumbnailGeneratorInterface thumbnailGeneratorInterface(bllContext);
     engine.rootContext()->setContextProperty("thumbnailGeneratorInterface", &thumbnailGeneratorInterface);
 
-    thumbnailGeneratorInterface.requestThumbnailGeneration();
+	VideoImporterInterface videoImporterInterface(bllContext.RawVideosDirectoryPath);
+    engine.rootContext()->setContextProperty("videoImporterInterface", &videoImporterInterface);
 
 	QObject::connect(&videoProcessorInterface, &VideoProcessorInterface::processingCompleted, &thumbnailGeneratorInterface, &ThumbnailGeneratorInterface::requestThumbnailGeneration);
+
+    thumbnailGeneratorInterface.requestThumbnailGeneration();
 
     return app.exec();
 }

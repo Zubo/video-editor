@@ -50,7 +50,7 @@ Item {
                         }
 
                         anchors.fill: parent
-                        onClicked: stack.push("qrc:/VideoPlayerView.qml", { videoPath: ("file:///" + filePath) })
+                        onClicked: mainViewStack.push("qrc:/VideoPlayerView.qml", { videoPath: ("file:///" + filePath) })
                     }
                 }
 
@@ -81,7 +81,7 @@ Item {
                         text: "Edit"
                         onClicked: {
                             mainView.selectedVideoSrcPath = filePath;
-                            stack.push(mainView.videoEffectSelector);
+                            mainViewStack.push(mainView.videoEffectSelector);
                         }
                     }
                 }

@@ -9,7 +9,6 @@ Rectangle {
     ColumnLayout {
         Layout.margins: 15
 
-        spacing: 10
         anchors.fill: parent
 
         Text {
@@ -56,7 +55,7 @@ Rectangle {
                 };
                 videoProcessorInterface.requestProcessing(data);
                 mainView.backButtonDisabled = true;
-                stack.push(mainView.videoProcessingProgressView);
+                mainViewStack.push(mainView.videoProcessingProgressView);
             }
             enabled: circleEffectSelector.selected | numericalEffectSelector.selected | progressbarEffectSelector.selected
         }
