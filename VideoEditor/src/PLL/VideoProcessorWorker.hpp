@@ -8,7 +8,7 @@
 #include <QObject>
 #include <QString>
 
-#include <BLL/VideoProcessor/ImageEffect/VideoEffectApplier.hpp>
+#include <BLL/VideoProcessor/VideoEffect/VideoEffectApplier.hpp>
 
 class VideoProcessorWorker : public QObject
 {

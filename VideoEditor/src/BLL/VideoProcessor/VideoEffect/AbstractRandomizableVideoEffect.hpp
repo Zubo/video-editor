@@ -1,7 +1,7 @@
 #ifndef ABSTRACTRANDOMIZABLEVIDEOEFFECT_H
 #define ABSTRACTRANDOMIZABLEVIDEOEFFECT_H
 
-#include <BLL/VideoProcessor/ImageEffect/AbstractVideoEffect.hpp>
+#include <BLL/VideoProcessor/VideoEffect/AbstractVideoEffect.hpp>
 
 class AbstractRandomizableVideoEffect : public AbstractVideoEffect
 {

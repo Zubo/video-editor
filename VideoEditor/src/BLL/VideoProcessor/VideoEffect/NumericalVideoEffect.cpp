@@ -5,7 +5,7 @@
 #include <opencv2/opencv.hpp>
 
 #include <BLL/VideoProcessor/Const.hpp>
-#include <BLL/VideoProcessor/ImageEffect/NumericalVideoEffect.hpp>
+#include <BLL/VideoProcessor/VideoEffect/NumericalVideoEffect.hpp>
 
 NumericalVideoEffect NumericalVideoEffect::create(int const fontScale)
 {

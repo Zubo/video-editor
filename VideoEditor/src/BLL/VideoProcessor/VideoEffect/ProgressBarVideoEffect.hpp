@@ -3,7 +3,7 @@
 
 #include <opencv2/opencv.hpp>
 
-#include <BLL/VideoProcessor/ImageEffect/AbstractVideoEffect.hpp>
+#include <BLL/VideoProcessor/VideoEffect/AbstractVideoEffect.hpp>
 
 class ProgressBarVideoEffect : public AbstractVideoEffect
 {

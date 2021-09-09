@@ -3,7 +3,7 @@
 
 #include <BLL/FilesystemPathUtils.hpp>
 #include <BLL/ThumbnailGenerator.hpp>
-#include <BLL/VideoProcessor/ImageEffect/VideoEffectApplier.hpp>
+#include <BLL/VideoProcessor/VideoEffect/VideoEffectApplier.hpp>
 
 namespace fs = std::filesystem;
 

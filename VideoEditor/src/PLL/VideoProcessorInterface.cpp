@@ -2,7 +2,7 @@
 
 #include <PLL/VideoProcessorInterface.hpp>
 
-#include <BLL/VideoProcessor/ImageEffect/VideoEffectApplier.hpp>
+#include <BLL/VideoProcessor/VideoEffect/VideoEffectApplier.hpp>
 #include <BLL/VideoProcessor/VideoProcessorUtils.hpp>
 
 VideoProcessorInterface::VideoProcessorInterface(BLLContext& bllContext) :

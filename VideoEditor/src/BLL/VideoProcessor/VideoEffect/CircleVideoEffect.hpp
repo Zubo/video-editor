@@ -1,7 +1,7 @@
 #ifndef CIRCLEVIDEOEFFECT_H
 #define CIRCLEVIDEOEFFECT_H
 
-#include <BLL/VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.hpp>
+#include <BLL/VideoProcessor/VideoEffect/AbstractRandomizableVideoEffect.hpp>
 
 class CircleVideoEffect : public AbstractRandomizableVideoEffect
 {

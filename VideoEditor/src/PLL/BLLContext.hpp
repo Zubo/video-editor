@@ -3,9 +3,9 @@
 
 #include <string>
 
-#include <BLL/VideoProcessor/ImageEffect/CircleVideoEffect.hpp>
-#include <BLL/VideoProcessor/ImageEffect/NumericalVideoEffect.hpp>
-#include <BLL/VideoProcessor/ImageEffect/ProgressBarVideoEffect.hpp>
+#include <BLL/VideoProcessor/VideoEffect/CircleVideoEffect.hpp>
+#include <BLL/VideoProcessor/VideoEffect/NumericalVideoEffect.hpp>
+#include <BLL/VideoProcessor/VideoEffect/ProgressBarVideoEffect.hpp>
 #include <BLL/ThumbnailGenerator.hpp>
 
 class BLLContext

@@ -8,7 +8,7 @@
 
 #include <opencv2/opencv.hpp>
 
-#include <BLL/VideoProcessor/ImageEffect/VideoEffectApplierEntry.hpp>
+#include <BLL/VideoProcessor/VideoEffect/VideoEffectApplierEntry.hpp>
 
 class VideoEffectApplier
 {

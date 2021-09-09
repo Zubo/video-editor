@@ -16,13 +16,13 @@ SOURCES += \
         src/PLL/ThumbnailGeneratorWorker.cpp \
         src/PLL/VideoEffectImageProvider.cpp \
         src/BLL/VideoProcessor/Const.cpp \
-        src/BLL/VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.cpp \
-        src/BLL/VideoProcessor/ImageEffect/CircleVideoEffect.cpp \
-        src/BLL/VideoProcessor/ImageEffect/AbstractVideoEffect.cpp \
-        src/BLL/VideoProcessor/ImageEffect/NumericalVideoEffect.cpp \
-        src/BLL/VideoProcessor/ImageEffect/ProgressBarVideoEffect.cpp \
-        src/BLL/VideoProcessor/ImageEffect/VideoEffectApplier.cpp \
-        src/BLL/VideoProcessor/ImageEffect/VideoEffectApplierEntry.cpp \
+        src/BLL/VideoProcessor/VideoEffect/AbstractRandomizableVideoEffect.cpp \
+        src/BLL/VideoProcessor/VideoEffect/CircleVideoEffect.cpp \
+        src/BLL/VideoProcessor/VideoEffect/AbstractVideoEffect.cpp \
+        src/BLL/VideoProcessor/VideoEffect/NumericalVideoEffect.cpp \
+        src/BLL/VideoProcessor/VideoEffect/ProgressBarVideoEffect.cpp \
+        src/BLL/VideoProcessor/VideoEffect/VideoEffectApplier.cpp \
+        src/BLL/VideoProcessor/VideoEffect/VideoEffectApplierEntry.cpp \
         src/BLL/VideoProcessor/VideoProcessorUtils.cpp \
         src/BLL/VideoProcessor/VideoThumbnailProvider.cpp \
         src/PLL/VideoProcessorInterface.cpp \
@@ -38,13 +38,13 @@ HEADERS += \
     src/PLL/ThumbnailGeneratorWorker.hpp \
     src/PLL/VideoEffectImageProvider.hpp \
     src/BLL/VideoProcessor/Const.hpp \
-    src/BLL/VideoProcessor/ImageEffect/AbstractRandomizableVideoEffect.hpp \
-    src/BLL/VideoProcessor/ImageEffect/CircleVideoEffect.hpp \
-    src/BLL/VideoProcessor/ImageEffect/AbstractVideoEffect.hpp \
-    src/BLL/VideoProcessor/ImageEffect/NumericalVideoEffect.hpp \
-    src/BLL/VideoProcessor/ImageEffect/ProgressBarVideoEffect.hpp \
-    src/BLL/VideoProcessor/ImageEffect/VideoEffectApplier.hpp \
-    src/BLL/VideoProcessor/ImageEffect/VideoEffectApplierEntry.hpp \
+    src/BLL/VideoProcessor/VideoEffect/AbstractRandomizableVideoEffect.hpp \
+    src/BLL/VideoProcessor/VideoEffect/CircleVideoEffect.hpp \
+    src/BLL/VideoProcessor/VideoEffect/AbstractVideoEffect.hpp \
+    src/BLL/VideoProcessor/VideoEffect/NumericalVideoEffect.hpp \
+    src/BLL/VideoProcessor/VideoEffect/ProgressBarVideoEffect.hpp \
+    src/BLL/VideoProcessor/VideoEffect/VideoEffectApplier.hpp \
+    src/BLL/VideoProcessor/VideoEffect/VideoEffectApplierEntry.hpp \
     src/BLL/VideoProcessor/VideoProcessorUtils.hpp \
     src/BLL/VideoProcessor/VideoThumbnailProvider.hpp \
     src/PLL/VideoProcessorInterface.hpp \
