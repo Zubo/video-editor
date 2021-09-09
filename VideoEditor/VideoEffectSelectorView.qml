@@ -3,8 +3,9 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 import QtMultimedia 5.12
 
-Item {
+Rectangle {
     id: videoEffectSelecton
+    anchors.fill: parent
 
     property var resolution: videoProcessorInterface.getVideoResolution(mainView.selectedVideoSrcPath)
     ColumnLayout {
@@ -14,13 +15,14 @@ Item {
         anchors.fill: parent
 
         Text {
+            Layout.maximumHeight: 10
             Layout.alignment: Layout.Center
             text: "Editing file: " + mainView.selectedVideoSrcPath
         }
 
         RowLayout {
             Layout.alignment: Layout.Center
-            spacing: 100
+            spacing: 50
 
             ColumnLayout {
                 Layout.alignment: Layout.Center
@@ -82,6 +84,7 @@ Item {
                 }
 
                 CheckBox {
+                    Layout.preferredHeight: 30
                     Layout.alignment: Layout.Center
                     id: circleEffectCB
                     checked: false
@@ -151,6 +154,7 @@ Item {
                 CheckBox {
                     id: numericalEffectCB
 
+                    Layout.preferredHeight: 30
                     Layout.alignment: Layout.Center
                     checked: false
                 }
@@ -163,7 +167,7 @@ Item {
                 Image {
                     id: progressEffectImg
                     cache: false
-                    Layout.alignment: Layout.Bottom
+                    Layout.alignment: Layout.Center
                     Layout.preferredHeight: 100
                     Layout.preferredWidth: 100
                     fillMode: Image.PreserveAspectFit
@@ -218,7 +222,7 @@ Item {
 
                 CheckBox {
                     id: progressBarCB
-
+                    Layout.preferredHeight: 30
                     Layout.alignment: Layout.Center
                     checked: false
                 }
