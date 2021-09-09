@@ -44,29 +44,37 @@ Item {
                     }
                 }
 
+
                 RowLayout {
                     Layout.alignment: Layout.Center
                     spacing: 20
-
-                    TextField {
-                        id: circleXPosTF
-                        placeholderText: "Enter X position"
-                        enabled: circleEffectCB.checked
-                        validator: IntValidator{
-                            bottom:0;
-                            top:resolution.x
-                        }
-                        Layout.preferredWidth: 100
+                    Text {
+                        Layout.alignment: Layout.Center
+                        text: "X: " + Math.floor(circleXSlider.value)
                     }
 
-                    TextField {
-                        id: circleYPosTF
-                        placeholderText: "Enter Y position"
+                    Slider {
+                        id: circleXSlider
                         enabled: circleEffectCB.checked
-                        validator: IntValidator{
-                            bottom:0;
-                            top:resolution.y
-                        }
+                        from: 0
+                        to: resolution.x
+                        Layout.preferredWidth: 100
+                    }
+                }
+
+                RowLayout {
+                    Layout.alignment: Layout.Center
+                    spacing: 20
+                    Text {
+                        Layout.alignment: Layout.Center
+                        text: "Y: " + Math.floor(circleYSlider.value)
+                    }
+
+                    Slider {
+                        id: circleYSlider
+                        enabled: circleEffectCB.checked
+                        from: 0
+                        to: resolution.y
                         Layout.preferredWidth: 100
                     }
                 }
@@ -101,29 +109,37 @@ Item {
                     }
                 }
 
+
                 RowLayout {
                     Layout.alignment: Layout.Center
                     spacing: 20
-
-                    TextField {
-                        id: numericalXPosTF
-                        placeholderText: "Enter X position"
-                        enabled: numericalEffectCB.checked
-                        validator: IntValidator{
-                            bottom:0;
-                            top:resolution.x
-                        }
-                        Layout.preferredWidth: 100
+                    Text {
+                        Layout.alignment: Layout.Center
+                        text: "X: " + Math.floor(numericalValueXSlider.value)
                     }
 
-                    TextField {
-                        id: numericalYPosTF
-                        placeholderText: "Enter Y position"
+                    Slider {
+                        id: numericalValueXSlider
                         enabled: numericalEffectCB.checked
-                        validator: IntValidator{
-                            bottom:0;
-                            top:resolution.y
-                        }
+                        from: 0
+                        to: resolution.x
+                        Layout.preferredWidth: 100
+                    }
+                }
+
+                RowLayout {
+                    Layout.alignment: Layout.Center
+                    spacing: 20
+                    Text {
+                        Layout.alignment: Layout.Center
+                        text: "Y: " + Math.floor(numericalValueYSlider.value)
+                    }
+
+                    Slider {
+                        id: numericalValueYSlider
+                        enabled: numericalEffectCB.checked
+                        from: 0
+                        to: resolution.y
                         Layout.preferredWidth: 100
                     }
                 }
@@ -161,29 +177,37 @@ Item {
                 RowLayout {
                     Layout.alignment: Layout.Center
                     spacing: 20
-
-                    TextField {
-                        id: progressBarXPosTF
-                        placeholderText: "Enter X position"
-                        enabled: progressBarCB.checked
-                        validator: IntValidator{
-                            bottom:0;
-                            top:resolution.x
-                        }
-                        Layout.preferredWidth: 100
+                    Text {
+                        Layout.alignment: Layout.Center
+                        text: "X: " + Math.floor(progressbarXSlider.value)
                     }
 
-                    TextField {
-                        id: progressBarYPosTF
-                        placeholderText: "Enter Y position"
+                    Slider {
+                        id: progressbarXSlider
                         enabled: progressBarCB.checked
-                        validator: IntValidator{
-                            bottom:0;
-                            top:resolution.y
-                        }
+                        from: 0
+                        to: resolution.x
                         Layout.preferredWidth: 100
                     }
                 }
+
+                RowLayout {
+                    Layout.alignment: Layout.Center
+                    spacing: 20
+                    Text {
+                        Layout.alignment: Layout.Center
+                        text: "Y: " + Math.floor(progressbarYSlider.value)
+                    }
+
+                    Slider {
+                        id: progressbarYSlider
+                        enabled: progressBarCB.checked
+                        from: 0
+                        to: resolution.y
+                        Layout.preferredWidth: 100
+                    }
+                }
+
 
                 CheckBox {
                     id: progressBarCB
@@ -204,11 +228,11 @@ Item {
                 var data = {
                     srcPath: mainView.selectedVideoSrcPath,
                     useCircleEffect: circleEffectCB.checked,
-                    circleEffectPos: Qt.point(circleXPosTF.text, circleYPosTF.text),
+                    circleEffectPos: Qt.point(circleXSlider.value, circleYSlider.value),
                     useNumericalEffect: numericalEffectCB.checked,
-                    numericalEffectPos: Qt.point(numericalXPosTF.text, numericalYPosTF.text),
+                    numericalEffectPos: Qt.point(numericalValueXSlider.value, numericalValueYSlider.value),
                     useProgressbarEffect: progressBarCB.checked,
-                    progressbarEffectPos: Qt.point(progressBarXPosTF.text, progressBarYPosTF.text)
+                    progressbarEffectPos: Qt.point(progressbarXSlider.value, progressbarYSlider.value)
                 };
                 videoProcessorInterface.requestProcessing(data);
                 mainView.backButtonDisabled = true;

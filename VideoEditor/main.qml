@@ -5,10 +5,10 @@ import QtQuick.Controls 2.12
 
 ApplicationWindow {
     id: mainView
-    width: 640
-    height: 480
-    minimumWidth: 640
-    minimumHeight: 480
+    width: 800
+    height: 600
+    minimumWidth: 800
+    minimumHeight: 600
     visible: true
     title: qsTr("Video Processor")
 
