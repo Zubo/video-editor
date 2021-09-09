@@ -1,3 +1,5 @@
+#include <exception>
+
 #include <opencv2/opencv.hpp>
 
 #include <BLL/ThumbnailGenerator.hpp>
@@ -24,7 +26,13 @@ void ThumbnailGenerator::generate()
 			return;
 		}
 
-		generateForDirectory(dirPath);
+		try {
+			generateForDirectory(dirPath);
+		}
+		catch (std::exception&) {
+			// just skip corrupted thumbnail
+			continue;
+		}
 	}
 
 	_isRunning = false;

@@ -8,11 +8,14 @@
 class ProgressBarVideoEffect : public AbstractVideoEffect
 {
 public:
-    static ProgressBarVideoEffect create(int const width, int const height);
+    static ProgressBarVideoEffect create(int const width = DEFAULT_WIDTH, int const height = DEFAULT_HEIGHT);
 
 private:
 	static const cv::Scalar BACKGROUND_COLOR;
 	static const cv::Scalar PROGRESS_COLOR;
+	static constexpr int DEFAULT_WIDTH = 150;
+	static constexpr int DEFAULT_HEIGHT = 30;
+
 
 private:
 	static constexpr float LOOP_DURATION_MS = 500.0F;

@@ -5,7 +5,7 @@
 BLLContext::BLLContext(std::string const & currentDirectoryPath) :
 	_CircleEffect(CircleVideoEffect::create()),
 	_NumericalEffect(NumericalVideoEffect::create()),
-    _ProgressBarEffect(ProgressBarVideoEffect::create(150, 30)),
+    _ProgressBarEffect(ProgressBarVideoEffect::create()),
 	RawVideosDirectoryPath(currentDirectoryPath + RAW_DIR_NAME),
 	EditedVideosDirectoryPath(currentDirectoryPath + EDITED_DIR_NAME)
 {
